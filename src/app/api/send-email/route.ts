@@ -52,21 +52,26 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(apiKey);
 
     const { data, error } = await resend.emails.send({
-      from: "From Portfolio <contact@itsniloy.me>",
-      to: ["contact.niloybhowmick@gmail.com"],
+      from: "From Portfolio <s.tsekouras12@gmail.com>",
+      to: ["s.tsekouras12@gmail.com"],
       subject: `New Message from Portfolio - ${projectType || "General Inquiry"}`,
       react: EmailTemplate({ name, email, message, projectType, timeline }),
     });
 
     if (error) {
-      return NextResponse.json({ error }, { status: 500 });
-    }
+  return NextResponse.json(
+    { error: error.message || "Failed to send email" },
+    { status: 500 }
+  );
+}
+
 
     return NextResponse.json({ success: true, data });
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to send email" },
-      { status: 500 }
-    );
-  }
+  } catch (err: any) {
+  return NextResponse.json(
+    { error: err?.message || "Failed to send email" },
+    { status: 500 }
+  );
+}
+
 }

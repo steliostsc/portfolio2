@@ -123,7 +123,7 @@
   scroll-behavior: smooth;
 }
 
-/* Dark Grid Background Pattern */
+/* Dark Grid Background Pattern 
 .grid-background {
   background-image:
     linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
@@ -136,7 +136,7 @@
     linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
-}
+} */
 
 /* Custom dark scrollbar */
 ::-webkit-scrollbar {
@@ -252,4 +252,96 @@ button {
 
 .bg-gray-50 {
   background-color: rgba(51, 65, 85, 0.3) !important;
+}
+
+
+
+
+
+
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background: linear-gradient(270deg, #0f172a, #1e3a8a, #3b82f6, #0f172a);
+  background-size: 800% 800%;
+  animation: gradient 20s ease infinite;
+}
+
+body {
+  @apply min-h-screen text-white;
+  background: linear-gradient(180deg, #0c2d48, #6497b1[]);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* Completely remove white background + spacing */
+.tiktok-embed,
+.tiktok-embed * {
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Force embed to fill its parent */
+.tiktok-embed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  border-radius: inherit !important;
+}
+
+/* Remove TikTok default shadow box */
+.tiktok-embed > section {
+  box-shadow: none !important;
+}
+
+/* remove all spacing TikTok adds on the container */
+.tiktok-wrapper > * {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* remove background + force flush edges */
+.tiktok-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: transparent !important;
+}
+
+/* force iframe to obey rounded corners */
+.tiktok-wrapper iframe {
+  border-radius: 16px !important;
+  display: block;
+}
+
+
+/* Force TikTok videos to display as 9:16 thumbnails */
+.tiktok-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;   /* 🔥 forces vertical ratio */
+  overflow: hidden;
+  border-radius: 16px;
+  background: black;
+}
+
+/* Make TikTok embed behave like a background cover image */
+.tiktok-thumb iframe,
+.tiktok-thumb video,
+.tiktok-thumb img,
+.tiktok-thumb * {
+  object-fit: cover !important; /* 🔥 crops to fill 9:16 */
+  width: 100% !important;
+  height: 100% !important;
 }

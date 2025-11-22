@@ -12,46 +12,54 @@ import {
 
 export const videoEditingSkills = [
   {
-    name: "DaVinci Resolve",
-    image_link: "/tools/DaVinci_Resolve_Studio.png",
+    name: "Enhance Audio",
+    image_link: "/tools/enhanceaudio.png",
     icon: Film,
     description:
-      "Professional color grading, editing, and audio post-production",
+      "Refine dialogue, music, and sound effects to achieve clear, balanced, and professional-quality audio.",
     color: "text-orange-400",
   },
   {
-    name: "Adobe Premiere Pro",
-    image_link: "/tools/Adobe_Premiere_Pro_CC.png",
+    name: "Color Correction",
+    image_link: "/tools/colorcorrection.jpg",
     icon: Scissors,
     description:
-      "Advanced video editing, multicam sync, and workflow optimization",
+      "Perform precise adjustments to color, contrast, and exposure to ensure visually consistent and cinematic results.",
     color: "text-purple-400",
   },
   {
-    name: "After Effects",
-    image_link: "/tools/Adobe_After_Effects_CC.png",
+    name: "Motion Tracking",
+    image_link: "/tools/motiontracking.png",
     icon: Sparkles,
-    description: "Motion graphics, visual effects, and advanced animations",
+    description: "Accurately track subjects or objects to seamlessly attach text, graphics, or visual elements.",
     color: "text-blue-400",
   },
   {
-    name: "Adobe Photoshop",
-    image_link: "/tools/Adobe_Photoshop_CC.png",
+    name: "Visual Effects",
+    image_link: "/tools/vfx.png",
     icon: Palette,
-    description: "Thumbnail design, graphics creation, and image manipulation",
+    description: "Execute green screen removal, digital overlay integration, and background clean-up for polished, professional visuals.",
     color: "text-cyan-400",
   },
   {
-    name: "Adobe Audition",
-    image_link: "/tools/Adobe_Audition_CC.png",
+    name: "Motion Graphics",
+    image_link: "/tools/motiongraphics.png",
     icon: Volume2,
-    description: "Audio editing, noise reduction, and sound enhancement",
+    description: "Implement fundamental animations, lower thirds, and transitions to enhance visual engagement.",
+    color: "text-green-400",
+  },
+  {
+    name: "Subtitles",
+    image_link: "/tools/subtittles.png",
+    icon: Volume2,
+    description: "Incorporate accurate and legible captions to improve accessibility and audience comprehension.",
     color: "text-green-400",
   },
 ];
 
-export const specializations = [
-  {
+
+//export const specializations = [
+/*  {
     title: "YouTube Content Creation",
     skills: [
       "Retention Editing",
@@ -59,7 +67,7 @@ export const specializations = [
       "SEO Optimization",
       "Analytics Understanding",
     ],
-    icon: "🎬",
+    icon: "🎬 ",
     description:
       "Specialized in creating engaging YouTube content that keeps viewers watching",
   },
@@ -121,35 +129,35 @@ export const specializations = [
     icon: "🎨",
     description:
       "Professional color work that gives videos a polished, cinematic feel",
-  },
-];
+  },*/
+//]; 
 
 export const achievements = [
   {
-    title: "50+ Projects Completed",
+    title: "150+ Projects Completed",
     description:
-      "Successfully delivered over 100 video projects across various industries",
+      "Delivered over 150 video projects across diverse industries.",
     icon: Award,
     color: "text-yellow-400",
   },
   {
     title: "Happy Clients",
     description:
-      "Built strong client relationships with positive feedback and lasting partnerships",
+      "Maintained strong client relationships with positive feedback.",
     icon: Users,
     color: "text-green-400",
   },
   {
-    title: "3+ Years Experience",
+    title: "Professional Experience",
     description:
-      "Professional video editing experience with continuous skill development",
+      "Developed expertise in video editing while continuously refining technical skills.",
     icon: Camera,
     color: "text-blue-400",
   },
   {
     title: "Fast Turnaround",
     description:
-      "Known for delivering high-quality work within tight deadlines",
+      "Deliver professional, high-quality work efficiently and on schedule.",
     icon: Zap,
     color: "text-purple-400",
   },
@@ -160,35 +168,35 @@ export const workflow = [
     step: "01",
     title: "Project Analysis",
     description:
-      "Understanding client requirements, target audience, and project goals",
+      "Evaluate client needs and the overall goals of the project.",
   },
   {
     step: "02",
     title: "Content Review",
     description:
-      "Analyzing raw footage, identifying key moments, and planning the edit",
+      "Review raw footage and plan the editing structure.",
   },
   {
     step: "03",
     title: "Rough Cut",
     description:
-      "Creating initial edit with basic cuts, transitions, and structure",
+      "Create the initial edit, establishing foundational cuts, transitions, and structure.",
   },
   {
     step: "04",
     title: "Fine Tuning",
     description:
-      "Adding graphics, color grading, audio enhancement, and effects",
+      "Adding graphics, effects and enhancing audio to deliver a polished final video.",
   },
   {
     step: "05",
     title: "Client Review",
-    description: "Presenting the work for feedback and implementing revisions",
+    description: "Present the work for feedback and incorporate revisions to meet client expectations.",
   },
   {
     step: "06",
     title: "Final Delivery",
     description:
-      "Exporting in required formats and delivering the completed project",
+      "Deliver the completed video in the specified formats.",
   },
 ];

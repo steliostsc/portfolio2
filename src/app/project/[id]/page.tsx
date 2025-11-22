@@ -1,4 +1,13 @@
-"use client";
+"use client"; // MUST be the very first line
+
+import { 
+  getVideoProjectById, 
+  getYouTubeEmbedUrl,
+  getTikTokThumbnail,
+  getTikTokEmbedUrl,
+} from "@/lib/helper";
+
+import TikTokEmbed from "@/components/TikTokEmbed";
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
@@ -24,11 +33,11 @@ import {
   Quote,
   ExternalLink,
 } from "lucide-react";
-import { getVideoProjectById, getYouTubeEmbedUrl } from "@/lib/helper";
 
 export default function ProjectPage() {
   const params = useParams();
   const [showVideo, setShowVideo] = useState(false);
+
   const project = getVideoProjectById(params.id as string);
 
   if (!project) {
@@ -55,6 +64,7 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="max-w-6xl mx-auto">
+
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -74,7 +84,7 @@ export default function ProjectPage() {
           </Button>
         </motion.div>
 
-        {/* Video Player Section */}
+        {/* Video Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,37 +92,57 @@ export default function ProjectPage() {
           className="mb-8"
         >
           <GlassmorphismCard className="p-4 md:p-6">
-            <div className="aspect-video relative rounded-lg overflow-hidden bg-gray-900">
-              {showVideo && embedUrl ? (
-                <iframe
-                  src={`${embedUrl}?autoplay=1`}
-                  title={project.video_title}
-                  className="w-full h-full"
-                  allowFullScreen
-                  allow="autoplay; encrypted-media"
-                />
-              ) : (
-                <div className="relative w-full h-full">
-                  <Image
-                    src={
-                      project.cover_image
-                        ? `https://img.youtube.com/vi/${project.cover_image}/maxresdefault.jpg`
-                        : "/placeholder.svg"
-                    }
-                    alt={project.video_title}
-                    fill
-                    className="object-cover"
+            <div className="relative w-full rounded-lg overflow-hidden bg-gray-900">
+              {project.video_link.includes("youtube.com") || project.video_link.includes("youtu.be") ? (
+                showVideo ? (
+                  <iframe
+                    src={`${embedUrl}?autoplay=1`}
+                    title={project.video_title}
+                    className="w-full aspect-video"
+                    allowFullScreen
+                    allow="autoplay; encrypted-media"
                   />
-                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <Button
-                      onClick={() => setShowVideo(true)}
-                      size="lg"
-                      className="bg-red-600 hover:bg-red-700 cursor-pointer"
-                    >
-                      <Play className="mr-2" size={24} />
-                      Play Video
-                    </Button>
+                ) : (
+                  <div className="relative w-full aspect-video">
+                    <Image
+                      src={
+                        project.cover_image
+                          ? `https://img.youtube.com/vi/${project.cover_image}/maxresdefault.jpg`
+                          : "/placeholder.svg"
+                      }
+                      alt={project.video_title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                      <Button
+                        onClick={() => setShowVideo(true)}
+                        size="lg"
+                        className="bg-red-600 hover:bg-red-700 cursor-pointer"
+                      >
+                        <Play className="mr-2" size={24} />
+                        Play Video
+                      </Button>
+                    </div>
                   </div>
+                )
+              ) : project.video_link.includes("tiktok.com") ? (
+  <div className="relative w-full flex justify-center">
+    <div className="rounded-xl overflow-hidden bg-gray-900 p-0 m-0">
+      <div className="tiktok-wrapper rounded-xl overflow-hidden">
+  <TikTokEmbed
+    videoLink={project.video_link}
+    width={322}
+    height={620}
+  />
+      </div>
+    </div>
+  </div>
+) : (
+
+
+                <div className="bg-gray-800 h-48 flex items-center justify-center text-gray-400">
+                  No preview available
                 </div>
               )}
             </div>
@@ -146,22 +176,17 @@ export default function ProjectPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div>
-                <h3 className="text-lg font-semibold mb-3 text-white">
-                  Project Details
-                </h3>
+                <h3 className="text-lg font-semibold mb-3 text-white">Project Details</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center text-gray-400">
                     <Calendar className="mr-2" size={14} />
                     <span>
                       Published:{" "}
-                      {new Date(project.publish_date).toLocaleDateString(
-                        "en-US",
-                        {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        }
-                      )}
+                      {new Date(project.publish_date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
                     </span>
                   </div>
                   <div className="flex items-center text-gray-400">
@@ -173,16 +198,10 @@ export default function ProjectPage() {
 
               {project.software_used && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-white">
-                    Software Used
-                  </h3>
+                  <h3 className="text-lg font-semibold mb-3 text-white">Software Used</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.software_used.map((software) => (
-                      <Badge
-                        key={software}
-                        variant="outline"
-                        className="border-gray-600 text-gray-300"
-                      >
+                      <Badge key={software} variant="outline" className="border-gray-600 text-gray-300">
                         {software}
                       </Badge>
                     ))}
@@ -192,16 +211,10 @@ export default function ProjectPage() {
             </div>
 
             <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-3 text-white">
-                Categories
-              </h3>
+              <h3 className="text-lg font-semibold mb-3 text-white">Categories</h3>
               <div className="flex flex-wrap gap-2">
                 {project.category.map((category) => (
-                  <Badge
-                    key={category}
-                    variant="outline"
-                    className="border-gray-600 text-gray-300"
-                  >
+                  <Badge key={category} variant="outline" className="border-gray-600 text-gray-300">
                     {category}
                   </Badge>
                 ))}
@@ -210,13 +223,13 @@ export default function ProjectPage() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild className="bg-red-600 hover:bg-red-700">
-                <a
-                  href={project.video_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={project.video_link} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2" size={16} />
-                  Watch on YouTube
+                  {project.video_link.includes("tiktok.com")
+                    ? "Watch on TikTok"
+                    : project.video_link.includes("instagram.com")
+                    ? "Watch on Instagram"
+                    : "Watch on YouTube"}
                 </a>
               </Button>
             </div>
@@ -224,7 +237,7 @@ export default function ProjectPage() {
         </motion.div>
 
         {/* Project Gallery */}
-        {project.project_images && project.project_images.length > 0 && (
+        {project.project_images?.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -281,16 +294,11 @@ export default function ProjectPage() {
                     className="rounded-full"
                   />
                   <div className="text-center">
-                    <p className="font-medium text-white text-lg">
-                      {project.client_name}
-                    </p>
+                    <p className="font-medium text-white text-lg">{project.client_name}</p>
                   </div>
                 </div>
                 <div className="relative">
-                  <Quote
-                    className="absolute -top-4 -left-4 text-blue-400 opacity-50"
-                    size={32}
-                  />
+                  <Quote className="absolute -top-4 -left-4 text-blue-400 opacity-50" size={32} />
                   <blockquote className="text-gray-300 italic text-lg text-center leading-relaxed pl-8">
                     "{project.client_feedback}"
                   </blockquote>

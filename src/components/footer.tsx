@@ -8,13 +8,14 @@ import {
   Mail,
   Heart,
   Instagram,
+  MessageCircle,
 } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    {
+    /*{
       name: "YouTube",
       href: "https://www.youtube.com/@itsniloybhowmick",
       icon: Youtube,
@@ -33,26 +34,30 @@ export default function Footer() {
       name: "Twitter",
       href: "#",
       icon: Twitter,
-    },
+    },*/
     {
       name: "Email",
-      href: "mailto:contact.niloybhowmick@gmail.com",
+      href: "mailto:s.tsekouras12@gmail.com",
       icon: Mail,
+    },
+
+    {
+      name: "WhatsApp",
+      href: "https://wa.me/+306983763372",
+      icon: MessageCircle,
     },
   ];
 
   return (
     <footer className="bg-gray-900/50 backdrop-blur-md border-t border-gray-700/50 mt-20">
       <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-50">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">Niloy Bhowmick</h3>
+            <h3 className="text-xl font-bold">Stelios Tsekouras</h3>
             <p className="text-gray-400 text-sm">
-              Video Editor and Motion Graphics Designer passionate about
-              creating visual stories with style, precision, and cinematic
-              magic.
-            </p>
+              Video Editing Services. Where creativity meets precision in every frame.
+            </p>  
           </div>
 
           {/* Quick Links */}
@@ -66,16 +71,16 @@ export default function Footer() {
                 Home
               </Link>
               <Link
-                href="/about"
+                href="/profile"
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                About
+                Profile
               </Link>
               <Link
-                href="/skills"
+                href="/expertise"
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                Skills
+                Expertise
               </Link>
               <Link
                 href="/contact"
@@ -111,15 +116,15 @@ export default function Footer() {
 
         <div className="border-t border-gray-700/50 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm flex items-center justify-center gap-1">
-            Made with <Heart className="text-red-500" size={16} /> by{" "}
-            <a
-              href="https://www.linkedin.com/in/mdmarufsarker/"
+            ©
+        <a
+              href="https://wa.me/+306983763372"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Md. Maruf Sarker
+              Stelios Tsekouras
             </a>{" "}
-            © {currentYear}
+             {currentYear}
           </p>
         </div>
       </div>

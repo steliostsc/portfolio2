@@ -9,8 +9,8 @@ import { Clapperboard } from "./ui/Clapperboard";
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Skills", href: "/skills" },
+  { name: "Profile", href: "/profile" },
+  { name: "Expertise", href: "/expertise" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -44,7 +44,7 @@ export default function Navbar() {
             <div className="w-7 h-7 rounded-lg flex items-center justify-center">
               <Clapperboard />
             </div>
-            <span className="text-xl font-bold text-white">itsNiloy</span>
+            <span className="text-xl font-bold text-white">Stelios Tsekouras</span>
           </Link>
 
           {/* Desktop Navigation */}

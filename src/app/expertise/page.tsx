@@ -21,7 +21,7 @@ import {
 import CTASection from "@/components/CTASection";
 import {
   videoEditingSkills,
-  specializations,
+  //specializations,
   achievements,
   workflow,
 } from "@/db/skills";
@@ -35,7 +35,7 @@ const iconMap = [
   { icon: <Send size={20} />, bg: "#6366f1" }, // Final Delivery
 ];
 
-export default function SkillsPage() {
+export default function ExpertisePage() {
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -47,12 +47,10 @@ export default function SkillsPage() {
           className="text-center mb-16"
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
-            My Skills & Expertise
+            Expertise
           </h1>
           <p className="text-gray-300 text-base md:text-lg max-w-3xl mx-auto">
-            With years of experience in video editing and motion graphics, I
-            bring technical expertise and creative vision to every project.
-            Here's what I can do for you.
+            As a professional video editor, I combine technical proficiency with a structured approach to deliver visually compelling content. My focus is on precision, clarity, and achieving the intended impact for each project.
           </p>
         </motion.div>
 
@@ -97,48 +95,6 @@ export default function SkillsPage() {
           </div>
         </motion.div>
 
-        {/* Specializations */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-20"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white text-center">
-            Specializations
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {specializations.map((spec, index) => (
-              <motion.div
-                key={spec.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-              >
-                <GlassmorphismCard className="p-6 h-full">
-                  <div className="text-3xl mb-4">{spec.icon}</div>
-                  <h3 className="text-lg font-semibold mb-3 text-white">
-                    {spec.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm mb-4">
-                    {spec.description}
-                  </p>
-                  <div className="space-y-2">
-                    {spec.skills.map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="border-gray-600 text-gray-300 mr-2 mb-2"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </GlassmorphismCard>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Achievements */}
         <motion.div
@@ -148,7 +104,7 @@ export default function SkillsPage() {
           className="mb-20"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white text-center">
-            Achievements
+            Accomplishments
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {achievements.map((achievement, index) => (
@@ -218,7 +174,7 @@ export default function SkillsPage() {
           className="mb-20"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white text-center">
-            My Workflow
+            Project Workflow
           </h2>
 
           <GlassmorphismCard className="p-4 md:p-8">
@@ -258,9 +214,9 @@ export default function SkillsPage() {
 
         {/* CTA Section */}
         <CTASection
-          title="Ready to Work Together?"
-          description="Let's discuss your video editing needs and create something amazing together. I'm here to help bring your vision to life with professional quality and creative flair."
-          buttonText="Start Your Project"
+          title="Let’s Create Together"
+          description="Delivering polished, impactful videos tailored to your vision."
+          buttonText="Start a Project"
           href="/contact"
         />
       </div>

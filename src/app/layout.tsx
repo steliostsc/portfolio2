@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Niloy Bhowmick – Video Editor & Motion Graphics Designer",
+    default: "Stelios Tsekouras – Video Editing Services",
     template: "%s | Niloy Bhowmick",
   },
   description:
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.itsniloy.me",
-    title: "Niloy Bhowmick – Video Editor & Motion Graphics Designer",
+    title: "Stelios Tsekouras – Video Editing Services",
     description:
       "Passionate Video Editor and Motion Graphics Designer delivering clean, cinematic edits and dynamic visual storytelling using DaVinci Resolve, Premiere Pro, and After Effects.",
     siteName: "Niloy Bhowmick Portfolio",
@@ -96,7 +96,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.png" />
-        <meta name="theme-color" content="#020817" />
+        <meta name="theme-color" content="#121702ff" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -135,14 +135,16 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} min-h-screen text-white`}
+        className={`${inter.className} min-h-screen text-white animate-gradient`}
         style={{
-          background: "#020817",
+          background: "linear-gradient(180deg, #0c2d48, #6497b1,)",
           backgroundAttachment: "fixed",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
-        <div className="grid-background-large min-h-screen">
-          <MouseMoveEffect />
+        <div className="min-h-screen">
+          {/* <MouseMoveEffect /> removed */}
           <Navbar />
           <main className="pt-16">{children}</main>
           <Footer />

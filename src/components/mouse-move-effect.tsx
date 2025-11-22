@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function MouseMoveEffect() {
+    return null; // disables all mouse effect
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {

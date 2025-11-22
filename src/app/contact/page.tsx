@@ -62,11 +62,10 @@ export default function ContactPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Get In Touch
+            Start a Project
           </h1>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from
-            you. Let's create something amazing together!
+            Looking to collaborate or start a project? I’d be glad to hear from you.
           </p>
         </motion.div>
 
@@ -84,39 +83,39 @@ export default function ContactPage() {
               </h3>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="bg-blue-600 p-3 rounded-lg">
+                  <div className="bg-blue-950 p-3 rounded-lg">
                     <Mail className="text-white" size={20} />
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Email</p>
                     <a
-                      href="mailto:contact.niloybhowmick@gmail.com"
+                      href="mailto:s.tsekouras12@gmail.com"
                       className="text-white hover:text-blue-400 transition-colors"
                     >
-                      contact.niloybhowmick@gmail.com
+                      s.tsekouras12@gmail.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="bg-green-600 p-3 rounded-lg">
+                  <div className="bg-blue-950 p-3 rounded-lg">
                     <MessageCircle className="text-white" size={20} />
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">WhatsApp</p>
                     <a
-                      href="https://wa.me/+8801580385556"
+                      href="https://wa.me/+306983763372"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover:text-green-400 transition-colors"
                     >
-                      +88 (015) 803-85556
+                      +30 6983763372
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="bg-purple-600 p-3 rounded-lg">
+                  <div className="bg-blue-950 p-3 rounded-lg">
                     <MapPin className="text-white" size={20} />
                   </div>
                   <div>
@@ -126,7 +125,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="bg-orange-600 p-3 rounded-lg">
+                  <div className="bg-blue-950 p-3 rounded-lg">
                     <Clock className="text-white" size={20} />
                   </div>
                   <div>
@@ -139,15 +138,15 @@ export default function ContactPage() {
 
             <GlassmorphismCard className="p-8">
               <h3 className="text-2xl font-semibold mb-6 text-white">
-                Why Choose Me?
+                Proven Results
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="bg-blue-600 w-2 h-2 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <h4 className="font-medium text-white">Quick Turnaround</h4>
+                    <h4 className="font-medium text-white">Efficient Results</h4>
                     <p className="text-gray-400 text-sm">
-                      Fast delivery without compromising quality
+                      Accurate, high-quality execution
                     </p>
                   </div>
                 </div>
@@ -155,21 +154,21 @@ export default function ContactPage() {
                   <div className="bg-green-600 w-2 h-2 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h4 className="font-medium text-white">
-                      Professional Quality
+                      Excellence Delivered
                     </h4>
                     <p className="text-gray-400 text-sm">
-                      Cinematic edits with attention to detail
+                      Precision, professional standards
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="bg-purple-600 w-2 h-2 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="bg-red-600 w-2 h-2 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <h4 className="font-medium text-white">
-                      Clear Communication
+                      Consistent Updates
                     </h4>
                     <p className="text-gray-400 text-sm">
-                      Regular updates and transparent process
+                      Ongoing Communication, full transparency
                     </p>
                   </div>
                 </div>
@@ -185,7 +184,7 @@ export default function ContactPage() {
           >
             <GlassmorphismCard className="p-8">
               <h3 className="text-2xl font-semibold mb-6 text-white">
-                Send Message
+                Get in Touch
               </h3>
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -202,7 +201,7 @@ export default function ContactPage() {
                       type="text"
                       required
                       className="bg-gray-800/50 border-gray-600 text-white"
-                      placeholder="Your name"
+                      placeholder="Your full name"
                     />
                   </div>
                   <div>
@@ -218,7 +217,7 @@ export default function ContactPage() {
                       type="email"
                       required
                       className="bg-gray-800/50 border-gray-600 text-white"
-                      placeholder="you@example.com"
+                      placeholder="email@example.com"
                     />
                   </div>
                 </div>
@@ -233,7 +232,7 @@ export default function ContactPage() {
                   <select
                     id="project-type"
                     name="project-type"
-                    className="w-full bg-gray-800/50 border border-gray-600 text-white rounded-md px-3 py-2"
+                    className="w-full bg-blue-950/70 border border-gray-600 text-gray-300 rounded-md px-3 py-2"
                   >
                     <option value="">Select project type</option>
                     <option value="youtube">YouTube Video</option>
@@ -251,14 +250,14 @@ export default function ContactPage() {
                     htmlFor="timeline"
                     className="text-sm text-gray-300 mb-2 block"
                   >
-                    Timeline
+                    Project Timeline
                   </label>
                   <Input
                     id="timeline"
                     name="timeline"
                     type="text"
                     className="bg-gray-800/50 border-gray-600 text-white"
-                    placeholder="e.g., 1 week, ASAP"
+                    placeholder="Delivery time"
                   />
                 </div>
 
@@ -274,32 +273,31 @@ export default function ContactPage() {
                     name="message"
                     required
                     rows={6}
-                    placeholder="Tell me about your project..."
+                    placeholder="Describe your project..."
                     className="bg-gray-800/50 border-gray-600 text-white resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                  className="w-full bg-blue-800 hover:bg-blue-700 text-white cursor-pointer"
                 >
                   <Send className="mr-2" size={16} />
-                  Send Message
+                  Send Inquiry
                 </Button>
               </form>
 
               <div className="mt-6 pt-6 border-t border-gray-700">
                 <p className="text-gray-400 text-sm text-center">
-                  Prefer to chat directly? Reach out on{" "}
+                  Discuss your project directly and instantly via{" "}
                   <a
-                    href="https://wa.me/+8801580385556"
+                    href="https://wa.me/+306983763372"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 hover:text-green-300"
                   >
                     WhatsApp
                   </a>{" "}
-                  for instant communication.
                 </p>
               </div>
             </GlassmorphismCard>

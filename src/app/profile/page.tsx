@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import GlassmorphismCard from "@/components/glassmorphism-card";
-import { Facebook, Github, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin, Mail, MessageCircle, Youtube } from "lucide-react";
 import { getClients } from "@/lib/helper";
 import CTASection from "@/components/CTASection";
 import Marquee from "@/components/ui/marquee";
 import { clientsData } from "@/db/clients";
 
-export default function AboutPage() {
+export default function ProfilePage() {
   const clients = getClients();
   return (
     <div className="min-h-screen py-20 px-4">
@@ -22,11 +22,10 @@ export default function AboutPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            About Me
+            Profile
           </h1>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            Hey there! I'm Niloy Bhowmick, a passionate Video Editor and Motion
-            Graphics Designer with a deep love for storytelling through visuals.
+            I am Stelios Tsekouras, a professional Video Editor specializing in Short Form content for social media, delivering polished, impactful videos across political, influencer, tourism, and brand projects.
           </p>
         </motion.div>
 
@@ -41,64 +40,42 @@ export default function AboutPage() {
               <div className="text-center">
                 <div className="relative w-64 h-64 mx-auto mb-6">
                   <Image
-                    src="/niloybhowmick.png"
-                    alt="Niloy Bhowmick"
+                    src="/steliostsekouras2.png"
+                    alt="Stelios Tsekouras"
                     fill
                     className="rounded-full object-cover"
                   />
                 </div>
                 <h2 className="text-2xl font-bold mb-2 text-white">
-                  Niloy Bhowmick
+                  Stelios Tsekouras
                 </h2>
                 <p className="text-blue-400 mb-4">
-                  Video Editor & Motion Graphics Designer
+                  Video Editing Services
                 </p>
                 <p className="text-gray-400 text-sm mb-6">
-                  Turning raw footage into visual stories with style, precision,
-                  and cinematic magic.
+                  Where creativity meets precision in every frame.
                 </p>
 
                 {/* Social Icons */}
                 <div className="flex justify-center gap-4">
+                   
+
+
                   <a
-                    href="https://www.linkedin.com/in/niloy-bhowmick"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-blue-500 transition-colors"
-                  >
-                    <Linkedin size={24} />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/its.niloybhowmick"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-pink-500 transition-colors"
-                  >
-                    <Instagram size={24} />
-                  </a>
-                  <a
-                    href="https://www.facebook.com/Its.niloybhowmick"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-blue-600 transition-colors"
-                  >
-                    <Facebook size={24} />
-                  </a>
-                  <a
-                    href="https://www.youtube.com/@itsniloybhowmick"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-red-600 transition-colors"
-                  >
-                    <Youtube size={24} />
-                  </a>
-                  <a
-                    href="https://github.com/Zan-getsu"
+                    href="mailto:s.tsekouras12@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
-                    <Github size={24} />
+                    <Mail size={24} />
+                  </a>
+                  <a
+                    href="https://wa.me/+306983763372"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <MessageCircle size={24} />
                   </a>
                 </div>
               </div>
@@ -114,20 +91,14 @@ export default function AboutPage() {
           >
             <GlassmorphismCard className="p-8">
               <h3 className="text-2xl font-semibold mb-4 text-white">
-                My Story
+                My Vision
               </h3>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  I specialize in DaVinci Resolve, Premiere Pro, and After
-                  Effects — delivering cinematic edits, clean motion graphics,
-                  and polished visual storytelling. From smooth transitions to
-                  precise audio syncing and dynamic animations — I focus on
-                  making your content not just polished, but powerful.
+                  As a professional Video Editor focused on Short Form content for social media, I create visually engaging stories through precise edits, seamless transitions, and optimized audio. My work combines dynamic visual effects with a clear focus on audience engagement.
                 </p>
                 <p>
-                  If you're looking for someone who blends creativity with
-                  technical skill, communicates clearly, and truly cares about
-                  making your content stand out — I'm your guy.
+                  With a combination of technical proficiency, creativity, and clear communication, I strive to maximize the impact of every project.
                 </p>
               </div>
             </GlassmorphismCard>
@@ -137,9 +108,9 @@ export default function AboutPage() {
                 Availability
               </h3>
               <div className="space-y-2 text-gray-300">
-                <p>✅ Available for both short-term and long-term projects</p>
-                <p>✅ Flexible with time zones and deadlines</p>
-                <p>✅ Quick turnaround times without compromising quality</p>
+                <p>󠁯•󠁏 Accepting new projects</p>
+                <p>󠁯•󠁏 Responsive across multiple time zones</p>
+                <p>󠁯•󠁏 Quick execution with attention to detail</p>
               </div>
             </GlassmorphismCard>
           </motion.div>
@@ -154,7 +125,7 @@ export default function AboutPage() {
         >
           <GlassmorphismCard className="p-8">
             <h3 className="text-2xl font-semibold mb-8 text-white text-center">
-              Trusted by Amazing Clients
+              Trusted by Valued Clients
             </h3>
 
             <Marquee speed={40} pauseOnHover className="pt-4">
@@ -182,9 +153,9 @@ export default function AboutPage() {
 
         {/* CTA Section */}
         <CTASection
-          title="Ready to Work Together?"
-          description="Let's create something amazing together. Whether it's a YouTube video, promotional content, or a full documentary, I'm here to bring your vision to life."
-          buttonText="Get In Touch"
+          title="Let’s Create Together"
+          description="Delivering polished, impactful videos tailored to your vision."
+          buttonText="Start a Project"
           href="/contact"
         />
       </div>
