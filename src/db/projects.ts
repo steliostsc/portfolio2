@@ -381,7 +381,6 @@ export const allVideoProjects: VideoProject[] = [
 
   //------------------------------------------------------------------------------------------------------------------------------------
 
-  
 
   {
   id: "lmSAfFDe2oI",
@@ -439,19 +438,19 @@ export const allVideoProjects: VideoProject[] = [
 
 
 {
-  id: "a8r2VgXw6pg",
-  video_title: "Studio Pantelidis: Βίντεο Γάμου Μανώλης & Ειρήνη",
+  id: "D2Z3HYvFUIs",
+  video_title: "Studio Pantelidis: Βίντεο Γάμου Λευτέρης & Αναστασία",
   video_description: "",
   tags: [],
-  cover_image: "a8r2VgXw6pg",
-  publish_date: "2025-10-16",
+  cover_image: "D2Z3HYvFUIs",
+  publish_date: "2026-01-31",
   client_name: "Studio Pantelidis",
   client_image: "/companies/studiopatelidislogo.jpg",
   client_feedback: "",
-  video_link: "https://youtu.be/a8r2VgXw6pg?si=kRLkOdVMYuyDNPiH",
+  video_link: "https://www.youtube.com/watch?v=D2Z3HYvFUIs",
   project_images: [],
   category: ["Cinematic",],
-  duration: "2:52",
+  duration: "1:54",
 },
 
 {
@@ -471,35 +470,54 @@ export const allVideoProjects: VideoProject[] = [
 },
 
 {
-  id: "jKeXl7CUP0g",
-  video_title: "Studio Pantelidis: Βίντεο Γάμου Γιώργος & Ιωάννα",
+  id: "a8r2VgXw6pg",
+  video_title: "Studio Pantelidis: Βίντεο Γάμου Μανώλης & Ειρήνη",
   video_description: "",
   tags: [],
-  cover_image: "jKeXl7CUP0g",
-  publish_date: "2025-11-11",
+  cover_image: "a8r2VgXw6pg",
+  publish_date: "2025-10-16",
   client_name: "Studio Pantelidis",
   client_image: "/companies/studiopatelidislogo.jpg",
   client_feedback: "",
-  video_link: "https://youtu.be/jKeXl7CUP0g?si=F8x7l9PHuZwvphe6",
+  video_link: "https://youtu.be/a8r2VgXw6pg?si=kRLkOdVMYuyDNPiH",
   project_images: [],
   category: ["Cinematic",],
-  duration: "1:35",
+  duration: "2:52",
+},
+
+
+
+
+{
+  id: "7567059092485737751",
+  video_title: "LessDietOfficial: HealthAid Συμπλήρωμα",
+  video_description: "Μπορεί να βοηθήσει ένα συμπλήρωμα για τις αρθρώσεις;",
+  tags: [],
+  cover_image: "https://www.tiktok.com/@lessdietofficial/video/7567059092485737751",
+  publish_date: "2025-10-30",
+  client_name: "LessDietOfficial",
+  client_image: "/companies/lessdietofficial.png",
+  client_feedback: "",
+  video_link: "https://www.tiktok.com/@lessdietofficial/video/7567059092485737751",
+  project_images: [],
+  category: ["Health", "Advertisement"],
+  duration: "1:01",
 },
 
 {
-  id: "7556205170107878678",
-  video_title: "Smoke Island Vapes : Advertisement Video",
-  video_description: "🚀 Αυτό είναι μόνο η αρχή… Από ένα μικρό μαγαζί στην Κρήτη σε κάτι πολύ μεγαλύτερο. Κάνε follow για να δεις το ταξίδι του Smoke Island 👀 #fyp #viral #business #tiktokgreece",
+  id: "7585506803144789281",
+  video_title: "Norma Karim: Christmas Table",
+  video_description: "Two countries. One sea. One Christmas table. 🎄🍽️ Cyprus and Lebanon share more than borders they share mezze, olive oil, lemon, herbs, hospitality, and the ritual of eating together. From hummus and tahini to souvla and kebab, from melomakarona to maamoul, Christmas tastes very similar on both sides of the Mediterranean. Full story on normakarim.com #MediterraneanChristmas #CyprusAndLebanon #MezeCulture #FoodTok #MediterraneanFlavors #ChristmasTable #SharedTraditions #MediterraneanEdit",
   tags: [],
-  cover_image: "https://www.tiktok.com/@smokeislandvape/video/7556205170107878678",
-  publish_date: "2025-10-01",
-  client_name: "Smoke Island",
-  client_image: "/companies/smokeislandlogo.png",
+  cover_image: "https://www.tiktok.com/@mediterranean.edit/video/7585506803144789281",
+  publish_date: "2025-12-19",
+  client_name: "Norma Karim",
+  client_image: "/companies/normakarim.jpg",
   client_feedback: "",
-  video_link: "https://www.tiktok.com/@smokeislandvape/video/7556205170107878678",
+  video_link: "https://www.tiktok.com/@mediterranean.edit/video/7585506803144789281",
   project_images: [],
-  category: ["Advertisement",],
-  duration: "1:17",
+  category: ["Food", "Tourism"],
+  duration: "1:32",
 },
 
 {
@@ -518,21 +536,6 @@ export const allVideoProjects: VideoProject[] = [
   duration: "0:48",
 },
 
-{
-  id: "7559201176449862934",
-  video_title: "Smoke Island Vapes : Advertisement Video 2",
-  video_description: "Είναι τελικά τόσο κακή όσο νομιζουμε; 🤔 #viral #fyp",
-  tags: [],
-  cover_image: "https://www.tiktok.com/@smokeislandvape/video/7559201176449862934",
-  publish_date: "2025-10-09",
-  client_name: "Smoke Island",
-  client_image: "/companies/smokeislandlogo.png",
-  client_feedback: "",
-  video_link: "https://www.tiktok.com/@smokeislandvape/video/7559201176449862934",
-  project_images: [],
-  category: ["Health","Advertisement",],
-  duration: "0:52",
-},
 
 
 
@@ -638,26 +641,6 @@ export const allVideoProjects: VideoProject[] = [
 },
 
 {
-  id: "7566389323944201474",
-  video_title: "Snobaria: The Travel Crew",
-  video_description: "ΜΑΝΤΕΨΤΕ ΤΟΝ ΠΡΟΟΡΙΣΜΟ @Markella Travels✈️🌍🌺 #snobaria",
-  tags: [],
-  cover_image: "https://www.tiktok.com/@snobaria/video/7566389323944201474",
-  publish_date: "2025-10-28",
-  client_name: "Snobaria",
-  client_image: "/companies/snobarialogo.png",
-  client_feedback: "",
-  video_link: "https://www.tiktok.com/@snobaria/video/7566389323944201474",
-  project_images: [],
-  category: ["Advertisement", "Tourism"],
-  duration: "1:48",
-},
-
-
-
-
-
-{
   id: "7495431764522028310",
   video_title: "Paros Super Trips: Advertisement Video",
   video_description: "Private sunset ride in Paros. Would you do it like this? Tag your travel buddy. #ParosSuperTrips #LuxuryTransfers #GreekIslandLife #ExploreParos #TravelGreece #TravelGoals #ConSantanderConecto",
@@ -673,6 +656,14 @@ export const allVideoProjects: VideoProject[] = [
   duration: "0:38",
   //software_used: ["CapCut"],
 },
+
+
+
+
+
+
+
+
 
 
 {
@@ -692,7 +683,21 @@ export const allVideoProjects: VideoProject[] = [
 },
 
 
-
+{
+  id: "7566389323944201474",
+  video_title: "Snobaria: The Travel Crew",
+  video_description: "ΜΑΝΤΕΨΤΕ ΤΟΝ ΠΡΟΟΡΙΣΜΟ @Markella Travels✈️🌍🌺 #snobaria",
+  tags: [],
+  cover_image: "https://www.tiktok.com/@snobaria/video/7566389323944201474",
+  publish_date: "2025-10-28",
+  client_name: "Snobaria",
+  client_image: "/companies/snobarialogo.png",
+  client_feedback: "",
+  video_link: "https://www.tiktok.com/@snobaria/video/7566389323944201474",
+  project_images: [],
+  category: ["Advertisement", "Tourism"],
+  duration: "1:48",
+},
 
 
 
@@ -746,6 +751,23 @@ export const allVideoProjects: VideoProject[] = [
   duration: "0:59",
 },
 
+
+{
+  id: "7556205170107878678",
+  video_title: "Smoke Island Vapes : Advertisement Video",
+  video_description: "🚫 @shopislandgr Σταμάτα το v@pe για ένα λεπτό και σκέψου… Φτιάχτηκε για μείωση βλάβης, όχι για μόδα. 👉 Εσύ γιατί άρχισες; Κάνε Follow για περισσότερα 🔥 και μπες στο site μας 🌍 Για να βρεις αυτό που σου ταιριάζει, με πάνω από 1000 κωδικούς ✅ #fyp #viral #greece",
+  tags: [],
+  cover_image: "https://www.tiktok.com/@smokeislandvape/video/7554328542641786134",
+  publish_date: "2025-10-01",
+  client_name: "Smoke Island",
+  client_image: "/companies/smokeislandlogo.png",
+  client_feedback: "",
+  video_link: "https://www.tiktok.com/@smokeislandvape/video/7554328542641786134",
+  project_images: [],
+  category: ["Advertisement",],
+  duration: "0:30",
+},
+
 {
   id: "7564097268593216790",
   video_title: "Snobaria: About You Haul",
@@ -761,12 +783,30 @@ export const allVideoProjects: VideoProject[] = [
   category: ["Advertisement", "Lifestyle"],
   duration: "2:29",
 },
+
+{
+  id: "7559201176449862934",
+  video_title: "Smoke Island Vapes : Advertisement Video 2",
+  video_description: "Είναι τελικά τόσο κακή όσο νομιζουμε; 🤔 #viral #fyp",
+  tags: [],
+  cover_image: "https://www.tiktok.com/@smokeislandvape/video/7559201176449862934",
+  publish_date: "2025-10-09",
+  client_name: "Smoke Island",
+  client_image: "/companies/smokeislandlogo.png",
+  client_feedback: "",
+  video_link: "https://www.tiktok.com/@smokeislandvape/video/7559201176449862934",
+  project_images: [],
+  category: ["Health","Advertisement",],
+  duration: "0:52",
+},
+
 {
   id: "7gNm8POM6QI",
   video_title: "ItsOnlySkillz: SufShark VPN",
   video_description: "ΜΕ ΕΒΑΛΑΝ ΣΤΗΝ ΦΥΛΑΚΗ ΤΟΥ ΑΛΚΑΤΡΑΖ (GTA RP) ΚΑΤΕΒΑΣΕ ΤΟ Surfshark εδώ : https://surfshark.com/onlyskillz βάλτε τον κωδικό ONLYSKILLZ στο checkout και θα πάρετε 4 extra μήνες Surfshark VPN! ΣΤΟ ΣΗΜΕΡΙΝΟ GTA RP ΜΕ ΣΤΕΛΝΟΥΝ ΣΤΗ ΘΡΥΛΙΚΗ ΦΥΛΑΚΗ ΤΟΥ ΑΛΚΑΤΡΑΖ. ΦΡΟΥΡΟΙ, ΕΠΙΚΙΝΔΥΝΟΙ ΚΡΑΤΟΥΜΕΝΟΙ ΚΑΙ ΜΥΣΤΙΚΑ ΠΕΡΑΣΜΑΤΑ ΠΟΥ ΔΕΝ ΠΡΕΠΕΙ ΝΑ ΔΩ ΚΑΝΕΙΣ. ΘΑ ΚΑΤΑΦΕΡΩ ΝΑ ΕΠΙΖΗΣΩ; ΘΑ ΑΠΟΔΡΑΣΩ; Ή ΘΑ ΜΕΙΝΩ ΓΙΑ ΠΑΝΤΑ ΣΤΟ ΑΛΚΑΤΡΑΖ; ΔΕΣ ΜΕΧΡΙ ΤΟ ΤΕΛΟΣ ΓΙΑΤΙ ΣΥΜΒΑΙΝΕΙ ΚΑΤΙ ΠΟΥ ΑΛΛΑΖΕΙ ΤΗΝ ΙΣΤΟΡΙΑ ΤΟΥ EMERALD CITY. ΚΑΝΕ LIKE & COMMENT ΑΝ ΘΕΣ ΣΥΝΕΧΕΙΑ ΜΕ ΑΠΟΔΡΑΣΕΙΣ.",
   tags: [],
   cover_image: "7gNm8POM6QI",
+  start_time: 345, // Start at specific seconds
   publish_date: "2025-10-13",
   client_name: "ItsOnlySkillz",
   client_image: "/companies/itsonlyskillzlogo.png",
@@ -776,23 +816,40 @@ export const allVideoProjects: VideoProject[] = [
   category: ["Advertisement",],
   duration: "0:44",
 },
+
 {
   id: "AR4nC1nQr4g",
   video_title: "ItsOnlySkillz: Playmobil",
   video_description: "ΕΠΕΣΤΡΕΨΕ Ο HITMAN 2 ΣΤΗΝ ΠΟΛΗ @playmobil.gr #Skytrails #playmobil #playmobilgreece Μην ξεχάσεις να κάνεις LIKE, ΚΟΙΝΟΠΟΙΗΣΗ και ΕΓΓΡΑΦΗ στο κανάλι! ✅ Κάνε εγγραφή για να με βοηθήσεις! ✅ Κάνε ένα LIKE στο βίντεο!✅ Κοινοποίησε το βίντεο!📷 Instagram ➝   / itsonly_skillz  📱TikTok ➝   / itsonly_skillz  📩 Business Inquiries ➝ ItsOnlySkillzOfficial@gmail.com",
   tags: [],
   cover_image: "AR4nC1nQr4g",
+  start_time: 28, // Start at specific seconds
   publish_date: "2025-10-09",
   client_name: "ItsOnlySkillz",
   client_image: "/companies/itsonlyskillzlogo.png",
   client_feedback: "",
-  video_link: "https://youtu.be/AR4nC1nQr4g?si=XSvbqyutk7eUTzlY&t=29",
+  video_link: "https://youtu.be/AR4nC1nQr4g?si=XSvbqyutk7eUTzlY&t=28",
   project_images: [],
   category: ["Advertisement",],
   duration: "1:03",
 },
 
-
+{
+  id: "tP42CKqrMlA",
+  video_title: "ItsOnlySkillz: Eldorado",
+  video_description: "Πάρε πράματα για το GTA ONLINE ΕΔΩ : https://www.eldorado.gg/SKILLZ Στο σημερινό επεισόδιο του GTA RP, ο Hitman περνάει την πιο κρίσιμη στιγμή της ζωής του: το μεγάλο δικαστήριο. Μετά από δεκάδες αποστολές, ληστείες και συγκρούσεις, έφτασε η ώρα της κρίσης… Θα μου ρίξουν ισόβια; Δείτε όλη την ακροαματική διαδικασία, τις κατηγορίες, τις αντιδράσεις και το ΤΕΛΙΚΟ αποτέλεσμα που θα αλλάξει την ιστορία του Emerald City. 🔥 Μην ξεχάσεις να κάνεις LIKE & SUBSCRIBE, έρχεται τεράστια συνέχεια στο storyline! 💬 Γράψε στα σχόλια: Πόσο πιστεύεις ότι έπρεπε να φάει ο Hitman;",
+  tags: [],
+  cover_image: "tP42CKqrMlA",
+  start_time: 233, // Start at specific seconds
+  publish_date: "2025-11-20",
+  client_name: "ItsOnlySkillz",
+  client_image: "/companies/itsonlyskillzlogo.png",
+  client_feedback: "",
+  video_link: "https://youtu.be/tP42CKqrMlA?si=mlIgv5-iYunyseBA&t=233",
+  project_images: [],
+  category: ["Advertisement",],
+  duration: "0:42",
+},
 
 
 

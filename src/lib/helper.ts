@@ -100,7 +100,7 @@ export function getClients(): Client[] {
 }
 
 // Helper function to get the proper embed link
-export const getYouTubeEmbedUrl = (url: string): string | null => {
+/*export const getYouTubeEmbedUrl = (url: string): string | null => {
   if (!url) return null;
 
   // Handle Shorts
@@ -115,6 +115,45 @@ export const getYouTubeEmbedUrl = (url: string): string | null => {
   );
   return match ? `https://www.youtube.com/embed/${match[1]}` : null;
 };
+*/
+
+
+
+
+
+
+
+export const getYouTubeEmbedUrl = (url: string): string | null => {
+  if (!url) return null;
+
+  // Extract timestamp parameter if present (t= or start=)
+  let startTime = '';
+  const timeMatch = url.match(/[?&](t|start)=(\d+)/);
+  if (timeMatch) {
+    startTime = timeMatch[2];
+  }
+
+  // Handle Shorts
+  if (url.includes("youtube.com/shorts/")) {
+    const match = url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/);
+    if (!match) return null;
+    const params = startTime 
+      ? `?start=${startTime}&autoplay=1&mute=1` 
+      : '?autoplay=1&mute=1';
+    return `https://www.youtube.com/embed/${match[1]}${params}`;
+  }
+
+  // Handle Regular YouTube video
+  const match = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|.+\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+  );
+  if (!match) return null;
+  const params = startTime 
+    ? `?start=${startTime}&autoplay=1&mute=1` 
+    : '?autoplay=1&mute=1';
+  return `https://www.youtube.com/embed/${match[1]}${params}`;
+};
+
 
 
 

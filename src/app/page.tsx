@@ -2,14 +2,15 @@
 
 import { fetchTikTokThumbnail } from "@/lib/helper";
 import ProjectCard from "@/components/ProjectCard";
+import Hero from "@/components/hero";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import GlassmorphismCard from "@/components/glassmorphism-card";
 import MouseMoveEffect from "@/components/mouse-move-effect";
-import { Play, Clock, User, ArrowRight, Loader2 } from "lucide-react";
+import { Play, Clock, User, ArrowRight, Loader2, Filter } from "lucide-react";
 import {
   getVideoProjectsByCategory,
   getVideoCategoriesWithCountIncludingAll,
@@ -25,8 +26,8 @@ export default function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [showCategories, setShowCategories] = useState(false);
 
-  // TikTok thumbnails stored OUTSIDE the map → correct!
   const [tiktokThumbs, setTikTokThumbs] = useState<Record<string, string>>({});
 
   const ITEMS_PER_PAGE = 9;
@@ -76,8 +77,7 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [selectedCategory, loadMoreProjects]);
 
-  // Load TikTok thumbnails once per project
-  /*useEffect(() => {
+  useEffect(() => {
     displayedProjects.forEach((project) => {
       if (
         project.video_link.includes("tiktok.com") &&
@@ -93,119 +93,132 @@ export default function HomePage() {
         });
       }
     });
-  }, [displayedProjects, tiktokThumbs]);*/
-
-  useEffect(() => {
-  displayedProjects.forEach((project) => {
-    if (
-      project.video_link.includes("tiktok.com") &&
-      !tiktokThumbs[project.id]
-    ) {
-      fetchTikTokThumbnail(project.video_link).then((thumb) => {
-        if (thumb) {
-          setTikTokThumbs((prev) => ({
-            ...prev,
-            [project.id]: thumb,
-          }));
-        }
-      });
-    }
-  });
-}, [displayedProjects, tiktokThumbs]);
-
-
-
+  }, [displayedProjects, tiktokThumbs]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen relative overflow-hidden">
       <MouseMoveEffect />
 
+      <Hero />
+
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto overflow-x-hidden">
+      <section id="projects" className="py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-16 relative"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Featured Projects
-            </h2>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-8">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none" />
+
+            <h2 className="text-4xl md:text-6xl font-bold mt-0 md:mt-20 mb-3 text-white tracking-tight">
+  Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Projects</span>
+</h2>
+
+            
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
               I produce short-form video content with precise editing, fluid
               transitions, and refined audio.
             </p>
           </motion.div>
 
-          {/* Category Filter */}
+          {/* Categories Toggle Button */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5, delay: 0.2 }}
+  className="flex justify-center mb-8"
+>
+  <button
+    onClick={() => setShowCategories(!showCategories)}
+    className="relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 flex items-center gap-2 w-[200px] justify-center"
+  >
+    <Filter size={16} />
+    {showCategories ? "Hide Categories" : "Show Categories"}
+  </button>
+</motion.div>
+
+{/* Category Filter Buttons */}
+<motion.div
+  initial={false}
+  animate={{
+    height: showCategories ? "auto" : 0,
+    opacity: showCategories ? 1 : 0,
+    marginBottom: showCategories ? 64 : 0
+  }}
+  transition={{
+    duration: 0.5,
+    ease: [0.4, 0, 0.2, 1],
+    opacity: { duration: 0.3 }
+  }}
+  style={{ overflow: "visible" }}
+>
+  <div className="flex flex-wrap justify-center gap-3">
+    {categories.map(({ category, count }) => (
+      <button
+        key={category}
+        onClick={() => setSelectedCategory(category)}
+        className={`
+          relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300
+          ${selectedCategory === category
+            ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] scale-105"
+            : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5"
+          }
+        `}
+      >
+        {category}
+        <span className={`
+          ml-2 text-[10px] px-1.5 py-0.5 rounded-full transition-colors
+          ${selectedCategory === category ? "bg-black text-white" : "bg-white/10 text-gray-400"}
+        `}>
+          {count}
+        </span>
+      </button>
+    ))}
+  </div>
+</motion.div>
+
+
+
+
+
+          {/* Projects Grid */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            layout
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
           >
-            {categories.map(({ category, count }) => (
-              <Button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                size="sm"
-                className={`relative border cursor-pointer ${
-                  selectedCategory === category
-                    ? "bg-[#020817] text-white border-white"
-                    : "bg-white/10 text-white border-white/20 hover:bg-white/20"
-                }`}
+            {displayedProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
               >
-                {category}
-                <span className="absolute top-[-6px] right-[-6px] bg-slate-500 text-white text-[10px] px-1.5 py-0.5 rounded-full">
-                  {count}
-                </span>
-              </Button>
+                <ProjectCard
+                  project={project}
+                  index={index}
+                  tiktokThumb={tiktokThumbs[project.id] || null}
+                />
+              </motion.div>
             ))}
           </motion.div>
-
-          {/* PROJECT GRID — CLEAN, FIXED, NO HOOKS INSIDE */}
-         {/* PROJECT GRID — CLEAN, FIXED, NO HOOKS INSIDE */}
-<div className="w-full overflow-x-hidden">
-  {/* Remove or keep layout — try without it if you're still seeing overflow */}
-  <motion.div
-    // layout // <-- try commenting out if issue persists
-    layout="position"
-    className="w-full box-border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-  >
-    {displayedProjects.map((project, index) => (
-      <motion.div
-        key={project.id}
-        layout
-        className="min-w-0 w-full"        // ← important: allow shrink and full width
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-      >
-        <ProjectCard
-          project={project}
-          index={index}
-          tiktokThumb={tiktokThumbs[project.id] || null}
-        />
-      </motion.div>
-    ))}
-  </motion.div>
-</div>
-
-
 
           {/* Load More Button */}
           {selectedCategory === "All" && hasMore && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center mt-12"
+              className="text-center mt-20"
             >
               <Button
                 onClick={loadMoreProjects}
                 disabled={loading}
                 size="lg"
-                className="border cursor-pointer"
+                className="bg-white text-black hover:bg-gray-200 rounded-full px-8 h-12 font-medium transition-all hover:scale-105"
               >
                 {loading ? (
                   <>

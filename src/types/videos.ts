@@ -7,6 +7,7 @@ export interface VideoProject {
   publish_date: string;
   client_name: string;
   client_image: string;
+    start_time?: number; // Optional field for start time in seconds
   client_feedback: string;
   video_link: string;
   project_images: string[];

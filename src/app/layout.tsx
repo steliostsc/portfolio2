@@ -8,6 +8,7 @@ import MouseMoveEffect from "@/components/mouse-move-effect";
 import JumpToTop from "@/components/jump-to-top";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { ReactLenis } from "lenis/react";
 
 const inter = Inter({ subsets: ["latin"] });
 // const nunito = Nunito({ subsets: ["latin"] });q
@@ -143,14 +144,16 @@ export default function RootLayout({
           backgroundSize: "cover",
         }}
       >
-        <div className="min-h-screen">
-          {/* <MouseMoveEffect /> removed */}
-          <Navbar />
-          <main className="pt-16">{children}</main>
-          <Footer />
-          <JumpToTop />
-          <Toaster position="top-center" />
-        </div>
+        <ReactLenis root>
+          <div className="min-h-screen">
+            {/* <MouseMoveEffect /> removed */}
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <JumpToTop />
+            <Toaster position="top-center" />
+          </div>
+        </ReactLenis>
       </body>
     </html>
   );

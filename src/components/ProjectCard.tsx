@@ -1,112 +1,224 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, Clock, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, ExternalLink } from "lucide-react";
 import GlassmorphismCard from "@/components/glassmorphism-card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import type { VideoProject } from "@/types/videos";
 
-export default function ProjectCard({
-  project,
-  index,
-  tiktokThumb
-}: {
+interface ProjectCardProps {
   project: VideoProject;
   index: number;
   tiktokThumb: string | null;
-}) {
-  const thumbSrc =
-    project.video_link.includes("youtube.com") ||
-    project.video_link.includes("youtu.be")
-      ? `https://img.youtube.com/vi/${project.cover_image}/maxresdefault.jpg`
-      : project.video_link.includes("tiktok.com")
-      ? tiktokThumb
-      : "/placeholder.svg";
+}
+
+export default function ProjectCard({ project, index, tiktokThumb }: ProjectCardProps) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Check if video is YouTube or TikTok
+  const isYouTube = project.video_link.includes("youtube.com") || project.video_link.includes("youtu.be");
+  const isTikTok = project.video_link.includes("tiktok.com");
+
+  // Handle click outside to stop playing
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
+        setIsPlaying(false);
+      }
+    };
+
+    if (isPlaying) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isPlaying]);
+
+  const handlePlayClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    if (isTikTok) {
+      window.open(project.video_link, "_blank");
+    } else if (isYouTube) {
+      setIsPlaying(true);
+    }
+  };
+
+  const handleStopClick = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    e?.preventDefault();
+    setIsPlaying(false);
+  };
+
+  // Determine thumbnail source
+  const thumbSrc = isYouTube
+    ? `https://img.youtube.com/vi/${project.cover_image}/maxresdefault.jpg`
+    : isTikTok
+    ? tiktokThumb
+    : "/placeholder.svg";
+
+  // Extract YouTube video ID and build URL with start time
+  const getYouTubeEmbedUrl = () => {
+    let videoId = project.cover_image;
+    
+    if (project.video_link.includes("youtube.com")) {
+      const url = new URL(project.video_link);
+      videoId = url.searchParams.get("v") || project.cover_image;
+    }
+    
+    // Build embed URL with start time if provided
+    const startParam = project.start_time ? `&start=${project.start_time}` : "";
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1${startParam}`;
+  };
 
   return (
-    <Link href={`/project/${project.id}`}>
-  <GlassmorphismCard className="p-6 h-full cursor-pointer group w-full min-w-0 box-border">
-    <div className="space-y-4 h-full flex flex-col min-w-0">
-      <div className="relative overflow-hidden rounded-lg h-48 bg-black min-w-0 w-full">
-        {!thumbSrc && (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
-            Loading...
+    <div ref={cardRef} className="h-full">
+      <GlassmorphismCard className="h-full group hover:shadow-2xl hover:shadow-blue-900/10 transition-shadow duration-500 flex flex-col">
+        <div className="flex flex-col h-full p-5">
+          {/* Media Area */}
+          <div className="relative overflow-hidden rounded-2xl aspect-video mb-5 shadow-lg bg-black isolate">
+            <AnimatePresence mode="wait">
+              {isPlaying && isYouTube ? (
+                <motion.div
+                  key="video-player"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 z-20"
+                >
+                  <iframe
+                    src={getYouTubeEmbedUrl()}
+                    title={project.video_title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                  />
+                  <button
+                    onClick={handleStopClick}
+                    className="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white p-1.5 rounded-full backdrop-blur-md transition-colors z-30"
+                    aria-label="Close preview"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 6 6 18" />
+                      <path d="m6 6 12 12" />
+                    </svg>
+                  </button>
+                </motion.div>
+              ) : (
+                <div
+                  key="thumbnail"
+                  className="relative w-full h-full cursor-pointer group/thumb"
+                  onClick={handlePlayClick}
+                >
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="w-full h-full"
+                  >
+                    {thumbSrc && (
+                      <Image
+                        src={thumbSrc}
+                        alt={project.video_title}
+                        fill
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    )}
+                  </motion.div>
+
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors duration-300 flex items-center justify-center backdrop-blur-[0px] group-hover/thumb:backdrop-blur-[2px]">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white transform scale-90 group-hover/thumb:scale-110 transition-all duration-300 shadow-xl shadow-black/20">
+                      {isTikTok ? (
+                        <ExternalLink className="ml-0" size={28} />
+                      ) : (
+                        <Play className="ml-1 fill-white" size={28} />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Duration Badge */}
+                  {project.duration && (
+                    <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-sm border border-white/10 text-white text-[10px] font-bold px-2 py-1 rounded-md">
+                      {project.duration}
+                    </div>
+                  )}
+                </div>
+              )}
+            </AnimatePresence>
           </div>
-        )}
 
-        {thumbSrc && (
-          <Image
-            src={thumbSrc}
-            alt={project.video_title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105 min-w-0"
-          />
-        )}
-
-            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <Play size={40} className="text-white" />
-            </div>
-
-            {project.duration && (
-              <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                {project.duration}
-              </div>
-            )}
-          </div>
-
-          <div className="flex-1">
-            <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors line-clamp-2">
-              {project.video_title}
-            </h3>
-
-            <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-              {project.video_description}
-            </p>
-
-            <div className="flex items-center space-x-4 text-xs text-gray-400 mb-4">
-              <div className="flex items-center space-x-1">
-                <User size={12} />
-                <span>{project.client_name}</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Clock size={12} />
-                <span>{new Date(project.publish_date).toLocaleDateString()}</span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.category.slice(0, 3).map((cat) => (
-                <Badge key={cat} variant="outline" className="text-xs border-gray-600 text-gray-300">
+          {/* Content Area - rest stays the same */}
+          <div className="flex-1 flex flex-col relative w-full">
+            <div className="flex gap-2 mb-3 flex-wrap">
+              {project.category.slice(0, 2).map((cat) => (
+                <Badge key={cat} variant="secondary" className="bg-white/5 hover:bg-white/10 text-gray-400 text-[10px] font-normal border-none">
                   {cat}
                 </Badge>
               ))}
             </div>
-          </div>
 
-          <div className="pt-4 border-t border-white/20">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Image
-                  src={project.client_image || "/placeholder.svg"}
-                  alt={project.client_name}
-                  width={24}
-                  height={24}
-                  className="rounded-full"
-                />
-                <span className="text-sm text-gray-400">{project.client_name}</span>
+            <Link href={`/project/${project.id}`} className="block group/title">
+              <h3 className="text-xl font-bold mb-3 text-white group-hover/title:text-blue-400 transition-colors line-clamp-2 leading-tight">
+                {project.video_title}
+              </h3>
+            </Link>
+
+            <p className="text-gray-400 text-sm mb-6 line-clamp-2 leading-relaxed">
+              {project.video_description}
+            </p>
+
+            <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-white/10 bg-white/5 p-1">
+                  <Image
+                    src={project.client_image || "/placeholder.svg"}
+                    alt={project.client_name}
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain rounded-full"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs font-medium text-white line-clamp-1 max-w-[100px] truncate">{project.client_name}</span>
+                  <span className="text-[10px] text-gray-400/90">{new Date(project.publish_date).toLocaleDateString()}</span>
+                </div>
               </div>
 
-              <Button size="sm" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-                <Play size={14} className="mr-1" />
-                Watch Now
-              </Button>
+              <div className="flex items-center gap-2">
+                <Link href={`/project/${project.id}`}>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-8 px-5 text-xs font-medium text-white bg-white/5 border border-white/10 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.1)] hover:bg-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-xl"
+                  >
+                    Details
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
-
         </div>
       </GlassmorphismCard>
-    </Link>
+    </div>
   );
 }

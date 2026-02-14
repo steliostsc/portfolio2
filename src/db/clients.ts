@@ -96,6 +96,12 @@ export const clientsData: Client[] = [
   },
 
   {
+    id: "normakarim",
+    name: "Norma Karim",
+    logo: "/companies/normakarim.jpg",
+  },
+
+  {
     id: "fidiaspanayiotoulogo",
     name: "Fidias Panayiotou",
     logo: "/companies/fidiaspanayiotoulogo.png",
