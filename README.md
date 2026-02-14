@@ -433,3 +433,5 @@ This project is open source and available under the [Apache License](LICENSE).
 ---
 
 Built with ❤️ using Next.js 15, TypeScript, Tailwind CSS, and modern web technologies.
+#   p o r t f o l i o 2  
+ 
