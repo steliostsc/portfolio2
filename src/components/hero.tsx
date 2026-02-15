@@ -22,10 +22,10 @@ export default function Hero() {
     return (
         <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
             {/* Background Ambience */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[100px]" />
-            </div>
+<div className="absolute inset-0 z-0">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px] animate-pulse" />
+</div>
+
 
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
                 {/* Badge */}
@@ -67,7 +67,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.6 }}
                     className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-12"
                 >
-                    Turning raw footage into visual stories — with style, precision, and a touch of <span className="text-white font-medium">cinematic magic</span>.
+                    Where <span className="text-white font-medium">creativity</span> meets precision in every frame.
                 </motion.p>
 
                 {/* Buttons */}
@@ -108,7 +108,7 @@ export default function Hero() {
             >
                 <button
                     onClick={scrollToProjects}
-                    className="flex flex-col items-center gap-2 text-gray-500 hover:text-white transition-colors duration-300"
+                    className="flex flex-col items-center gap-2 text-white hover:text-white transition-colors duration-300"
                 >
                     <span className="text-[10px] tracking-widest uppercase">Scroll</span>
                     <ArrowDown className="animate-bounce" size={20} />
