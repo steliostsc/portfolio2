@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     default: "Stelios Tsekouras – Video Editing Services",
     template: "%s | Niloy Bhowmick",
   },
+    themeColor: "#0c2d48",
   description:
     "Turning raw footage into visual stories — with style, precision, and a touch of cinematic magic. Niloy Bhowmick specializes in DaVinci Resolve, Premiere Pro, and After Effects — delivering cinematic edits, motion graphics, and polished storytelling.",
   keywords: [
@@ -95,10 +96,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <meta name="theme-color" content="#0c2d48" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="theme-color" content="#0c2d48" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c2d48" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
