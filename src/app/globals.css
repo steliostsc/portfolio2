@@ -13,16 +13,6 @@ body {
   background-color: #3676e4 !important;
 }
 
-/* Optimize scroll performance on mobile */
-@media (max-width: 768px) {
-  html {
-    scroll-behavior: auto !important;
-  }
-  
-  * {
-    scroll-behavior: auto !important;
-  }
-}
 
 @custom-variant dark (&:is(.dark *));
 
