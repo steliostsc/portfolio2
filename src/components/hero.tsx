@@ -8,27 +8,10 @@ import { useLenis } from "lenis/react";
 export default function Hero() {
     const lenis = useLenis();
 
-    const scrollToProjects = (e?: React.MouseEvent) => {
-        e?.preventDefault();
-        
-        const projectsElement = document.querySelector("#projects");
-        if (!projectsElement) return;
-        
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
-        
-        if (isMobile) {
-            const offset = 100;
-            const elementPosition = projectsElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        } else if (lenis) {
-            lenis.scrollTo("#projects", {
-                offset: -100,
-            });
+    const scrollToProjects = () => {
+        const element = document.getElementById("projects");
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
         }
     };
 
@@ -41,9 +24,9 @@ export default function Hero() {
 
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
                     className="inline-block mb-6"
                 >
                     <div className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-medium text-blue-200 tracking-widest uppercase">
@@ -51,50 +34,44 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
-                    <motion.span
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-                        className="block bg-gradient-to-br from-white via-white to-gray-500 bg-clip-text text-transparent"
-                    >
+                <motion.h1
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]"
+                >
+                    <span className="block bg-gradient-to-br from-white via-white to-gray-500 bg-clip-text text-transparent">
                         CINEMATIC
-                    </motion.span>
-                    <motion.span
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-                        className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-4"
-                    >
+                    </span>
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-4">
                         EDITOR
-                    </motion.span>
-                </h1>
+                    </span>
+                </motion.h1>
 
                 <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-12"
                 >
                     Turning raw footage into visual stories — with style, precision, and a touch of <span className="text-white font-medium">cinematic magic</span>.
                 </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-6"
                 >
                     <MagneticButton>
-                        <a
-                            href="#projects"
+                        <button
                             onClick={scrollToProjects}
                             className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-black bg-white rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer"
                         >
                             <span className="relative z-10 flex items-center">
                                 View Work
                             </span>
-                        </a>
+                        </button>
                     </MagneticButton>
 
                     <MagneticButton>
@@ -111,7 +88,7 @@ export default function Hero() {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.4 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2"
             >
                 <button
