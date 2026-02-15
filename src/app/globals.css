@@ -183,10 +183,22 @@ html, body {
 }
 
 
-/* Smooth scroll class */
+/* Smooth scroll class - optimized for mobile */
 .smooth-scroll {
   scroll-behavior: smooth;
 }
+
+/* Disable smooth scroll on mobile for better performance */
+@media (max-width: 768px) {
+  html, body {
+    scroll-behavior: auto !important;
+  }
+  
+  .smooth-scroll {
+    scroll-behavior: auto !important;
+  }
+}
+
 
 /* Dark Grid Background Pattern 
 .grid-background {
