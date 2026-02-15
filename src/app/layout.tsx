@@ -145,7 +145,7 @@ export default function RootLayout({
         />
       </head>
 
-      
+
       <body className={`${inter.className} min-h-screen text-white`} style={{ backgroundColor: '#3676e4' }}>
   <ReactLenis root options={{ syncTouch: false }}>
     <div className="min-h-screen">
@@ -157,6 +157,7 @@ export default function RootLayout({
     </div>
   </ReactLenis>
 </body>
+
 
 
 
