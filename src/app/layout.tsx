@@ -142,17 +142,20 @@ export default function RootLayout({
         />
       </head>
       <body
-  className={`${inter.className} min-h-screen text-white animate-gradient`}
+  className={`${inter.className} min-h-screen text-white`}
   style={{
     backgroundColor: "#0c2d48",
-    background: "linear-gradient(180deg, #0c2d48, #6497b1,)",
-    backgroundAttachment: "fixed",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
+    background: "linear-gradient(180deg, #0c2d48 0%, #6497b1 100%)",
+    // Remove backgroundAttachment: "fixed"
+    // Remove animate-gradient class
   }}
 >
 
-        <ReactLenis root options={{ syncTouch: false }}>
+
+        <ReactLenis root options={{ 
+  syncTouch: false,  // Disable Lenis on touch devices
+  touchMultiplier: 0 // Extra safety - no touch handling
+}}>
   <div className="min-h-screen">
     <Navbar />
     <main>{children}</main>
