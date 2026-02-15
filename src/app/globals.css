@@ -1,19 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-body {
+html {
   background-color: #3676e4 !important;
 }
 
-html {
+body {
   background-color: #3676e4 !important;
 }
 
 :root {
   background-color: #3676e4 !important;
 }
-
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -112,7 +110,6 @@ html {
   --chart-5: 340 75% 55%;
 }
 
-/* Fix autofill styles */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -135,14 +132,10 @@ textarea:-webkit-autofill:active {
   caret-color: white !important;
 }
 
-/* Force white cursor/caret for all inputs */
 input, textarea {
   caret-color: white !important;
   color: white !important;
 }
-
-
-
 
 html, body {
   overflow-x: hidden !important;
@@ -155,68 +148,25 @@ html, body {
   box-sizing: border-box;
 }
 
-
-/* @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
-
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
-    background: #020817;
+    background: #3676e4;
     color: #f8fafc;
   }
 }
+
 html, body {
   overflow-x: hidden !important;
 }
-/* prevent grid/flex children from forcing container width */
-.grid > * , .flex > * {
+
+.grid > *, .flex > * {
   min-width: 0;
 }
 
-
-/* Smooth scroll class - optimized for mobile */
-.smooth-scroll {
-  scroll-behavior: smooth;
-}
-
-/* Disable smooth scroll on mobile for better performance */
-@media (max-width: 768px) {
-  html, body {
-    scroll-behavior: auto !important;
-  }
-  
-  .smooth-scroll {
-    scroll-behavior: auto !important;
-  }
-}
-
-
-/* Dark Grid Background Pattern 
-.grid-background {
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.grid-background-large {
-  background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-} */
-
-/* Custom dark scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -235,21 +185,17 @@ html, body {
   background: rgba(148, 163, 184, 0.5);
 }
 
-/* Dark Glassmorphism effects */
 .glass {
   background: rgba(15, 23, 42, 0.3);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-/* Terminal cursor animation */
 @keyframes blink {
-  0%,
-  50% {
+  0%, 50% {
     opacity: 1;
   }
-  51%,
-  100% {
+  51%, 100% {
     opacity: 0;
   }
 }
@@ -258,23 +204,15 @@ html, body {
   animation: blink 1s infinite;
 }
 
-/* GitHub contribution graph styles */
 .github-calendar {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 .github-calendar .ContributionCalendar-day {
   border-radius: 2px;
 }
 
-/* Ensure all text is properly visible in dark theme */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   color: #f8fafc;
 }
 
@@ -289,35 +227,30 @@ p {
 .text-gray-400 {
   color: #e3e7eb !important;
 }
+
 .text-gray-500 {
   color: #7b7f83 !important;
 }
 
-/* Dark theme for form inputs */
-input,
-textarea {
+input, textarea {
   background-color: rgba(15, 23, 42, 0.5) !important;
   border-color: rgba(148, 163, 184, 0.3) !important;
   color: #f8fafc !important;
 }
 
-input::placeholder,
-textarea::placeholder {
+input::placeholder, textarea::placeholder {
   color: #94a3b8 !important;
 }
 
-/* Dark theme for buttons */
 button {
   color: #f8fafc;
 }
 
-/* Loading spinner dark theme */
 .animate-spin {
   border-color: rgba(59, 130, 246, 0.3);
   border-top-color: #3b82f6;
 }
 
-/* Override any white backgrounds */
 .bg-white {
   background-color: rgba(30, 41, 59, 0.8) !important;
 }
@@ -326,7 +259,6 @@ button {
   color: #f8fafc !important;
 }
 
-/* Ensure proper contrast for all elements */
 .text-gray-900 {
   color: #f8fafc !important;
 }
@@ -335,34 +267,6 @@ button {
   background-color: rgba(51, 65, 85, 0.3) !important;
 }
 
-
-
-
-
-
-
-/*@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  background: linear-gradient(270deg, #0f172a, #1e3a8a, #3b82f6, #0f172a);
-  background-size: 800% 800%;
-  animation: gradient 20s ease infinite;
-}
-
-body {
-  @apply min-h-screen text-white;
-  background: linear-gradient(180deg, #0c2d48, #6497b1[]);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}*/
-
-
-/* Completely remove white background + spacing */
 .tiktok-embed,
 .tiktok-embed * {
   background: transparent !important;
@@ -371,7 +275,6 @@ body {
   padding: 0 !important;
 }
 
-/* Force embed to fill its parent */
 .tiktok-embed iframe {
   width: 100% !important;
   height: 100% !important;
@@ -379,18 +282,15 @@ body {
   border-radius: inherit !important;
 }
 
-/* Remove TikTok default shadow box */
 .tiktok-embed > section {
   box-shadow: none !important;
 }
 
-/* remove all spacing TikTok adds on the container */
 .tiktok-wrapper > * {
   margin: 0 !important;
   padding: 0 !important;
 }
 
-/* remove background + force flush edges */
 .tiktok-wrapper {
   display: flex;
   justify-content: center;
@@ -400,29 +300,25 @@ body {
   background: transparent !important;
 }
 
-/* force iframe to obey rounded corners */
 .tiktok-wrapper iframe {
   border-radius: 16px !important;
   display: block;
 }
 
-
-/* Force TikTok videos to display as 9:16 thumbnails */
 .tiktok-thumb {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;   /* 🔥 forces vertical ratio */
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   border-radius: 16px;
   background: black;
 }
 
-/* Make TikTok embed behave like a background cover image */
 .tiktok-thumb iframe,
 .tiktok-thumb video,
 .tiktok-thumb img,
 .tiktok-thumb * {
-  object-fit: cover !important; /* 🔥 crops to fill 9:16 */
+  object-fit: cover !important;
   width: 100% !important;
   height: 100% !important;
 }
@@ -439,8 +335,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-
-
-
-
