@@ -145,7 +145,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} min-h-screen text-white`} style={{ backgroundColor: '#3676e4' }}>
-  <ReactLenis root options={{ syncTouch: false }}>
+  <ReactLenis root options={{ 
+    syncTouch: false,
+    smoothWheel: false,
+    lerp: 0
+  }}>
     <div className="min-h-screen">
       <Navbar />
       <main>{children}</main>
@@ -155,7 +159,6 @@ export default function RootLayout({
     </div>
   </ReactLenis>
 </body>
-
 
 
     </html>
