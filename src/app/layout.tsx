@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
 
+
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import MouseMoveEffect from "@/components/mouse-move-effect";
@@ -10,8 +11,9 @@ import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ReactLenis } from "lenis/react";
 
+
 const inter = Inter({ subsets: ["latin"] });
-// const nunito = Nunito({ subsets: ["latin"] });q
+
 
 export const metadata: Metadata = {
   title: {
@@ -76,7 +78,6 @@ export const metadata: Metadata = {
     title: "Stelios Tsekouras – Video Editing Services",
     description:
       "I produce short-form video content with precise editing, fluid transitions, and refined audio.",
-    //creator: "@niloy_bhowmick", // update if you have a real Twitter handle
     images: ["/steliostsekouras.png"],
   },
   verification: {
@@ -87,6 +88,7 @@ export const metadata: Metadata = {
   },
   category: "Video Editing Services",
 };
+
 
 export default function RootLayout({
   children,
@@ -104,6 +106,7 @@ export default function RootLayout({
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="mobile-web-app-capable" content="yes" />
 
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -115,9 +118,9 @@ export default function RootLayout({
               image: "/niloybhowmick.png",
               sameAs: [
                 "https://www.itsniloy.me",
-                "https://linkedin.com/in/niloybhowmick", // update if available
-                "https://youtube.com/@niloybhowmick", // update if available
-                "https://twitter.com/niloy_bhowmick", // update if available
+                "https://linkedin.com/in/niloybhowmick",
+                "https://youtube.com/@niloybhowmick",
+                "https://twitter.com/niloy_bhowmick",
               ],
               jobTitle: "Video Editor & Motion Graphics Designer",
               knowsAbout: [
@@ -141,30 +144,23 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-  className={`${inter.className} min-h-screen text-white`}
-  style={{
-    backgroundColor: "#0c2d48",
-    background: "linear-gradient(180deg, #0c2d48 0%, #6497b1 100%)",
-    // Remove backgroundAttachment: "fixed"
-    // Remove animate-gradient class
-  }}
->
-
-
-        <ReactLenis root options={{ 
-  syncTouch: false,  // Disable Lenis on touch devices
-  touchMultiplier: 0 // Extra safety - no touch handling
-}}>
-  <div className="min-h-screen">
-    <Navbar />
-    <main>{children}</main>
-    <Footer />
-    <JumpToTop />
-    <Toaster position="top-center" />
-  </div>
-</ReactLenis>
-
+      <body className={`${inter.className} min-h-screen text-white`}>
+        <div 
+          className="fixed inset-0 -z-10 animate-gradient"
+          style={{
+            background: "linear-gradient(180deg, #0c2d48 0%, #6497b1 100%)",
+          }}
+        />
+        
+        <ReactLenis root options={{ syncTouch: false }}>
+          <div className="min-h-screen">
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <JumpToTop />
+            <Toaster position="top-center" />
+          </div>
+        </ReactLenis>
       </body>
     </html>
   );
