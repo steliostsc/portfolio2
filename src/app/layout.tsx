@@ -100,8 +100,8 @@ export default function RootLayout({
       <head>
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#0c2d48" />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c2d48" />
+  <meta name="theme-color" content="#3676e4 " />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3676e4 " />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -148,7 +148,7 @@ export default function RootLayout({
         <div 
           className="fixed inset-0 -z-10 animate-gradient"
           style={{
-            background: "linear-gradient(180deg, #0c2d48 0%, #6497b1 100%)",
+            background: "linear-gradient(180deg, #3676e4 0%, #3676e4 100%)",
           }}
         />
         
