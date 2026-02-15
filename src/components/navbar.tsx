@@ -17,11 +17,9 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -30,10 +28,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.nav
-      initial={false}
-      animate={mounted ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    <nav
       className={`fixed top-0 left-0 right-0 z-[100] flex justify-center transition-all duration-300 ${
         scrolled ? "pt-4 pb-0" : "pt-5 pb-0"
       }`}
@@ -42,10 +37,10 @@ export default function Navbar() {
         className={`
           flex flex-col items-center
           px-6 sm:px-8 py-3
-          transition-all duration-500 ease-[cubic-bezier(0.25,0.8,0.25,1)] border
+          transition-all duration-500 ease-out border
           ${
             scrolled || isOpen
-              ? "w-[95%] max-w-5xl rounded-3xl backdrop-blur-xl md:backdrop-blur-3xl bg-white/5 border border-white/10 shadow-2xl"
+              ? "w-[95%] max-w-5xl rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg"
               : "w-full max-w-7xl bg-transparent border-transparent"
           }
         `}
@@ -58,7 +53,6 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="flex items-center space-x-1">
               {navItems.map((item) => {
@@ -98,7 +92,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -109,7 +102,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -139,6 +131,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

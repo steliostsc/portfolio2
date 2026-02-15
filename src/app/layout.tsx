@@ -117,7 +117,6 @@ export default function RootLayout({
         className={`${inter.className} min-h-screen text-white`}
         style={{
           background: "#020817",
-          backgroundAttachment: "fixed",
         }}
       >
         <div className="grid-background-large min-h-screen">
