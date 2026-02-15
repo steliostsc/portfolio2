@@ -1,17 +1,18 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-html {
-  background-color: #132043 !important;
+body {
+  background-color: #3676e4 !important;
 }
 
-body {
-  background-color: #132043 !important;
+html {
+  background-color: #3676e4 !important;
 }
 
 :root {
-  background-color: #132043 !important;
+  background-color: #3676e4 !important;
 }
+
 
 
 @custom-variant dark (&:is(.dark *));
@@ -439,17 +440,6 @@ body {
   padding: 0;
 }
 
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 0%; }
-  50% { background-position: 0% 100%; }
-}
-
-.animate-gradient-shift {
-  background: linear-gradient(180deg, #0c2d48 0%, #145374 33%, #2b6a8e 66%, #6497b1 100%);
-  background-size: 100% 400%;
-  animation: gradientShift 20s ease infinite;
-}
 
 
 

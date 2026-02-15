@@ -144,9 +144,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} min-h-screen text-white`}>
-  <div className="fixed inset-0 -z-10 animate-gradient-shift" />
-  
+      <body className={`${inter.className} min-h-screen text-white`} style={{ backgroundColor: '#3676e4' }}>
   <ReactLenis root options={{ syncTouch: false }}>
     <div className="min-h-screen">
       <Navbar />
@@ -157,6 +155,7 @@ export default function RootLayout({
     </div>
   </ReactLenis>
 </body>
+
 
     </html>
   );
