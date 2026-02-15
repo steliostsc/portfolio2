@@ -13,12 +13,6 @@ body {
   background-color: #3676e4 !important;
 }
 
-/* Smooth scroll for mobile (CSS only - lightweight) */
-@media (max-width: 768px) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
 
 
 @custom-variant dark (&:is(.dark *));

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ClapperboardIcon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Clapperboard } from "./ui/Clapperboard";
 
 const navItems = [
@@ -17,9 +17,11 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -29,8 +31,8 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={false}
+      animate={mounted ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-[100] flex justify-center transition-all duration-300 ${
         scrolled ? "pt-4 pb-0" : "pt-5 pb-0"
@@ -50,12 +52,11 @@ export default function Navbar() {
       >
         <div className="w-full flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 group">
-  <Clapperboard />
-  <span className="text-xl font-bold tracking-tight text-white group-hover:text-blue-200 transition-colors">
-    Stelios Tsekouras
-  </span>
-</Link>
-
+            <Clapperboard />
+            <span className="text-xl font-bold tracking-tight text-white group-hover:text-blue-200 transition-colors">
+              Stelios Tsekouras
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
@@ -78,7 +79,6 @@ export default function Navbar() {
                       {item.name}
                     </span>
 
-                    {/* Active Background Pill */}
                     {isActive && (
                       <motion.div
                         layoutId="nav-pill"
@@ -91,7 +91,6 @@ export default function Navbar() {
                       />
                     )}
 
-                    {/* Hover Glow */}
                     <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 rounded-full transition-opacity duration-300" />
                   </Link>
                 );
@@ -110,7 +109,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Dropdown - Unified Container */}
+        {/* Mobile Navigation Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -121,25 +120,19 @@ export default function Navbar() {
               className="w-full overflow-hidden md:hidden"
             >
               <div className="pt-4 pb-2 space-y-2 flex flex-col">
-                {navItems.map((item, i) => (
-                  <motion.div
+                {navItems.map((item) => (
+                  <Link
                     key={item.name}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: i * 0.05 + 0.1 }}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-3 rounded-xl text-base font-medium transition-all ${
+                      pathname === item.href
+                        ? "text-white bg-blue-600/20 border border-blue-500/30"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
                   >
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`block px-4 py-3 rounded-xl text-base font-medium transition-all ${
-                        pathname === item.href
-                          ? "text-white bg-blue-600/20 border border-blue-500/30"
-                          : "text-gray-400 hover:text-white hover:bg-white/5"
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
+                    {item.name}
+                  </Link>
                 ))}
               </div>
             </motion.div>

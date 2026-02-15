@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import MagneticButton from "./magnetic-button";
+
 import { useLenis } from "lenis/react";
 
 export default function Hero() {
@@ -10,40 +11,29 @@ export default function Hero() {
 
     const scrollToProjects = (e?: React.MouseEvent) => {
         e?.preventDefault();
-        
-        const projectsElement = document.querySelector("#projects");
-        if (!projectsElement) return;
-        
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        
-        if (isMobile) {
-            const offset = 100;
-            const elementPosition = projectsElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        } else if (lenis) {
+        if (lenis) {
             lenis.scrollTo("#projects", {
-                offset: -100,
+                duration: 2,
+                offset: -100, // Account for fixed navbar
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential ease-out for premium feel
             });
         }
     };
 
     return (
         <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+            {/* Background Ambience */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[100px]" />
             </div>
 
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+                {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     className="inline-block mb-6"
                 >
                     <div className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-medium text-blue-200 tracking-widest uppercase">
@@ -51,38 +41,41 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
+                {/* Main Title - Split for animation */}
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
                     <motion.span
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-                        className="block bg-gradient-to-br from-white via-white to-gray-500 bg-clip-text text-transparent will-change-transform"
+                        initial={{ opacity: 0, y: 50, rotate: 2 }}
+                        animate={{ opacity: 1, y: 0, rotate: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                        className="block bg-gradient-to-br from-white via-white to-gray-500 bg-clip-text text-transparent"
                     >
                         CINEMATIC
                     </motion.span>
                     <motion.span
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-                        className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-4 will-change-transform"
+                        initial={{ opacity: 0, y: 50, rotate: -2 }}
+                        animate={{ opacity: 1, y: 0, rotate: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                        className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pb-4"
                     >
                         EDITOR
                     </motion.span>
                 </h1>
 
+                {/* Subtitle */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
                     className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-12"
                 >
-                    Where <span className="text-white font-medium">creativity</span> meets precision in every frame.
+                    Turning raw footage into visual stories — with style, precision, and a touch of <span className="text-white font-medium">cinematic magic</span>.
                 </motion.p>
 
+                {/* Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-6"
                 >
                     <MagneticButton>
@@ -108,10 +101,11 @@ export default function Hero() {
                 </motion.div>
             </div>
 
+            {/* Scroll Indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
+                transition={{ delay: 1.5, duration: 1 }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2"
             >
                 <button

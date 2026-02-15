@@ -4,10 +4,11 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import MouseMoveEffect from "@/components/mouse-move-effect";
 import JumpToTop from "@/components/jump-to-top";
 import Footer from "@/components/footer";
+import SmoothScroll from "@/components/smooth-scroll";
 import { Toaster } from "@/components/ui/sonner";
-import LenisWrapper from "@/components/lenis-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     default: "Stelios Tsekouras – Video Editing Services",
     template: "%s | Stelios Tsekouras",
   },
-  themeColor: "#3676e4",
+  themeColor: "#020817",
   description:
     "Professional Video Editor specializing in Short Form content for social media, delivering polished, impactful videos across political, influencer, tourism, and brand projects.",
   keywords: [
@@ -26,7 +27,6 @@ export const metadata: Metadata = {
     "Premiere Pro",
     "After Effects",
     "Short Form Content",
-    "Social Media Video",
   ],
   authors: [{ name: "Stelios Tsekouras", url: "https://stsekouras.vercel.app" }],
   creator: "Stelios Tsekouras",
@@ -47,8 +47,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://stsekouras.vercel.app",
     title: "Stelios Tsekouras – Video Editing Services",
-    description:
-      "Professional Video Editor specializing in Short Form content for social media, delivering polished, impactful videos across political, influencer, tourism, and brand projects.",
+    description: "Professional Video Editor specializing in Short Form content for social media.",
     siteName: "Stelios Tsekouras Portfolio",
     images: [
       {
@@ -62,8 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Stelios Tsekouras – Video Editing Services",
-    description:
-      "Short-form video content with precise editing, fluid transitions, and refined audio.",
+    description: "Short-form video content with precise editing and refined audio.",
     images: ["/steliostsekouras.png"],
   },
   verification: {
@@ -81,16 +79,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.png" />
-        <meta name="theme-color" content="#3676e4" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3676e4" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="mobile-web-app-capable" content="yes" />
-
+        <meta name="theme-color" content="#020817" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -120,17 +113,23 @@ export default function RootLayout({
           }}
         />
       </head>
-
-      <body className={`${inter.className} min-h-screen text-white`} style={{ backgroundColor: '#3676e4' }}>
-        <LenisWrapper>
-          <div className="min-h-screen">
+      <body
+        className={`${inter.className} min-h-screen text-white`}
+        style={{
+          background: "#020817",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="grid-background-large min-h-screen">
+          <SmoothScroll>
+            <MouseMoveEffect />
             <Navbar />
             <main>{children}</main>
             <Footer />
             <JumpToTop />
             <Toaster position="top-center" />
-          </div>
-        </LenisWrapper>
+          </SmoothScroll>
+        </div>
       </body>
     </html>
   );
