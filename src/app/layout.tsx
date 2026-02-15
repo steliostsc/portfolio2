@@ -145,21 +145,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} min-h-screen text-white`}>
-  <div 
-    className="fixed inset-0 -z-10"
-    style={{
-      background: "linear-gradient(180deg, #0c2d48 0%, #145374 33%, #2b6a8e 66%, #6497b1 100%)",
-      backgroundSize: "100% 400%",
-      animation: "gradientShift 20s ease infinite",
-    }}
-  />
-  
-  <style jsx>{`
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 0%; }
-      50% { background-position: 0% 100%; }
-    }
-  `}</style>
+  <div className="fixed inset-0 -z-10 animate-gradient-shift" />
   
   <ReactLenis root options={{ syncTouch: false }}>
     <div className="min-h-screen">
