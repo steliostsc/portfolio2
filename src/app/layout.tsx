@@ -142,14 +142,16 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} min-h-screen text-white animate-gradient`}
-        style={{
-          background: "linear-gradient(180deg, #0c2d48, #6497b1,)",
-          backgroundAttachment: "fixed",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
+  className={`${inter.className} min-h-screen text-white animate-gradient`}
+  style={{
+    backgroundColor: "#0c2d48",
+    background: "linear-gradient(180deg, #0c2d48, #6497b1,)",
+    backgroundAttachment: "fixed",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+  }}
+>
+
         <ReactLenis root>
           <div className="min-h-screen">
             {/* <MouseMoveEffect /> removed */}
