@@ -66,18 +66,24 @@ export default function ProjectCard({ project, index, tiktokThumb }: ProjectCard
     : "/placeholder.svg";
 
   // Extract YouTube video ID and build URL with start time
-  const getYouTubeEmbedUrl = () => {
-    let videoId = project.cover_image;
-    
-    if (project.video_link.includes("youtube.com")) {
-      const url = new URL(project.video_link);
-      videoId = url.searchParams.get("v") || project.cover_image;
-    }
-    
-    // Build embed URL with start time if provided
-    const startParam = project.start_time ? `&start=${project.start_time}` : "";
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1${startParam}`;
-  };
+ const getYouTubeEmbedUrl = () => {
+  let videoId = project.cover_image;
+  
+  if (project.video_link.includes("youtube.com")) {
+    const url = new URL(project.video_link);
+    videoId = url.searchParams.get("v") || project.cover_image;
+  }
+  
+  // Detect if mobile
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  // Build embed URL with start time if provided
+  const startParam = project.start_time ? `&start=${project.start_time}` : "";
+  const muteParam = isMobile ? "&mute=1" : "&mute=0";
+  
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1${muteParam}&controls=1&rel=0&modestbranding=1&playsinline=1${startParam}`;
+};
+
 
   return (
     <div ref={cardRef} className="h-full">

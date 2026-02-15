@@ -107,7 +107,7 @@ export default function ProfilePage() {
             <BentoGridItem
               title="Available Remotely"
               header={
-                <div className="relative flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-black overflow-hidden flex items-center justify-center border border-white/5">
+                <div className="relative flex flex-1 w-full h-full min-h-[8rem] md:min-h-[6rem] rounded-xl bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-black overflow-hidden flex items-center justify-center border border-white/5">
                   <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
                   <div className="relative z-10 flex flex-col items-center">
@@ -189,7 +189,7 @@ export default function ProfilePage() {
           >
             <Marquee className="[--duration:20s]">
               {clientsData.map((client) => (
-                <div key={client.id} className="mx-8 flex flex-col items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100 cursor-pointer">
+                  <div key={client.id} className="mx-8 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer">
                   <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white/5 p-4 flex items-center justify-center shadow-sm hover:shadow-md hover:bg-white/10 transition-all">
                     <Image
                       src={client.logo}
