@@ -8,7 +8,7 @@ import MouseMoveEffect from "@/components/mouse-move-effect";
 import JumpToTop from "@/components/jump-to-top";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
-import { ReactLenis } from "lenis/react";
+import LenisWrapper from "@/components/lenis-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 // const nunito = Nunito({ subsets: ["latin"] });q
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "Stelios Tsekouras – Video Editing Services",
     template: "%s | Niloy Bhowmick",
   },
-    themeColor: "#0c2d48",
+  themeColor: "#0c2d48",
   description:
     "Turning raw footage into visual stories — with style, precision, and a touch of cinematic magic. Niloy Bhowmick specializes in DaVinci Resolve, Premiere Pro, and After Effects — delivering cinematic edits, motion graphics, and polished storytelling.",
   keywords: [
@@ -96,13 +96,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="theme-color" content="#0c2d48" />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c2d48" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <meta name="theme-color" content="#0c2d48" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c2d48" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="mobile-web-app-capable" content="yes" />
 
         <script
           type="application/ld+json"
@@ -115,9 +115,9 @@ export default function RootLayout({
               image: "/niloybhowmick.png",
               sameAs: [
                 "https://www.itsniloy.me",
-                "https://linkedin.com/in/niloybhowmick", // update if available
-                "https://youtube.com/@niloybhowmick", // update if available
-                "https://twitter.com/niloy_bhowmick", // update if available
+                "https://linkedin.com/in/niloybhowmick",
+                "https://youtube.com/@niloybhowmick",
+                "https://twitter.com/niloy_bhowmick",
               ],
               jobTitle: "Video Editor & Motion Graphics Designer",
               knowsAbout: [
@@ -142,17 +142,16 @@ export default function RootLayout({
         />
       </head>
       <body
-  className={`${inter.className} min-h-screen text-white animate-gradient`}
-  style={{
-    backgroundColor: "#0c2d48",
-    background: "linear-gradient(180deg, #0c2d48, #6497b1,)",
-    backgroundAttachment: "fixed",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  }}
->
-
-        <ReactLenis root>
+        className={`${inter.className} min-h-screen text-white animate-gradient`}
+        style={{
+          backgroundColor: "#0c2d48",
+          background: "linear-gradient(180deg, #0c2d48, #6497b1,)",
+          backgroundAttachment: "fixed",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <LenisWrapper>
           <div className="min-h-screen">
             {/* <MouseMoveEffect /> removed */}
             <Navbar />
@@ -161,7 +160,7 @@ export default function RootLayout({
             <JumpToTop />
             <Toaster position="top-center" />
           </div>
-        </ReactLenis>
+        </LenisWrapper>
       </body>
     </html>
   );
