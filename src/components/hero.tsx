@@ -10,27 +10,9 @@ export default function Hero() {
 
     const scrollToProjects = (e?: React.MouseEvent) => {
         e?.preventDefault();
-        
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        
-        if (isMobile) {
-            // Native instant scroll on mobile - no lag
-            const projectsElement = document.querySelector("#projects");
-            if (projectsElement) {
-                const offset = 100;
-                const elementPosition = projectsElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "auto"
-                });
-            }
-        } else if (lenis) {
-            // Smooth Lenis scroll on desktop
+        if (lenis) {
             lenis.scrollTo("#projects", {
-                duration: 1.5,
                 offset: -100,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             });
         }
     };
