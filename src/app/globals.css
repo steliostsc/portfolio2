@@ -13,6 +13,9 @@ body {
   background-color: #3676e4 !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 
 @custom-variant dark (&:is(.dark *));
@@ -134,6 +137,11 @@ textarea:-webkit-autofill:active {
   caret-color: white !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 input, textarea {
   caret-color: white !important;
   color: white !important;
@@ -189,7 +197,7 @@ html, body {
 
 .glass {
   background: rgba(15, 23, 42, 0.3);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
   border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
