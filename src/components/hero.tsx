@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import MagneticButton from "./magnetic-button";
-
-
 import { useLenis } from "lenis/react";
 
 export default function Hero() {
@@ -12,25 +10,39 @@ export default function Hero() {
 
     const scrollToProjects = (e?: React.MouseEvent) => {
         e?.preventDefault();
-        if (lenis) {
+        
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // Native instant scroll on mobile - no lag
+            const projectsElement = document.querySelector("#projects");
+            if (projectsElement) {
+                const offset = 100;
+                const elementPosition = projectsElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "auto"
+                });
+            }
+        } else if (lenis) {
+            // Smooth Lenis scroll on desktop
             lenis.scrollTo("#projects", {
-                duration: 2,
-                offset: -100, // Account for fixed navbar
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential ease-out for premium feel
+                duration: 1.5,
+                offset: -100,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             });
         }
     };
 
     return (
         <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-            {/* Background Ambience */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[100px]" />
             </div>
 
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-                {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -42,7 +54,6 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Main Title - Split for animation */}
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white mb-8 leading-[0.9]">
                     <motion.span
                         initial={{ opacity: 0, y: 50, rotate: 2 }}
@@ -62,7 +73,6 @@ export default function Hero() {
                     </motion.span>
                 </h1>
 
-                {/* Subtitle */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -72,7 +82,6 @@ export default function Hero() {
                     Where <span className="text-white font-medium">creativity</span> meets precision in every frame.
                 </motion.p>
 
-                {/* Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -102,7 +111,6 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            {/* Scroll Indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
