@@ -27,7 +27,7 @@ export default function Footer() {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/in/stelios-tsekouras-859885283/",
+      href: "https://www.linkedin.com/in/stsekouras/",
       icon: Linkedin,
     },
   ];

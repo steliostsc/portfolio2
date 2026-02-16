@@ -162,7 +162,7 @@ export default function ProfilePage() {
                 <div className="flex flex-1 h-full w-full items-center justify-between px-16 bg-gradient-to-r from-purple-500/20 via-blue-500/10 to-black rounded-xl border border-white/5 py-4 md:py-0 min-h-[5rem]">
                   <a href="mailto:s.tsekouras12@gmail.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-600 hover:scale-110 transition-all duration-300 text-white"><Mail size={20} /></a>
                   <a href="https://wa.me/+306983763372" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-green-600 hover:scale-110 transition-all duration-300 text-white"><MessageCircle size={20} /></a>
-                  <a href="https://www.linkedin.com/in/stelios-tsekouras-859885283/" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-[#0077b5] hover:scale-110 transition-all duration-300 text-white"><Linkedin size={20} /></a>
+                  <a href="https://www.linkedin.com/in/stsekouras/" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-[#0077b5] hover:scale-110 transition-all duration-300 text-white"><Linkedin size={20} /></a>
                 </div>
               }
               className="h-full"
