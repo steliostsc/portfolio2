@@ -20,8 +20,7 @@ export default function Hero() {
     };
 
     return (
-        <section id="projects" className="py-20 px-4 sm:px-6 -mt-32 relative z-10">
-
+        <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
             {/* Background Ambience */}
 <div className="absolute inset-0 z-0">
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[120px] animate-pulse" />
