@@ -38,16 +38,15 @@ export default function Navbar() {
     >
       <div
         className={`
-  flex flex-col items-center
-  px-6 sm:px-8 py-3
-  transition-all duration-500 ease-out border
-  ${
-    scrolled || isOpen
-      ? "w-[95%] max-w-5xl rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg"
-      : "w-full max-w-7xl border-transparent"
-  }
-`}
-
+          flex flex-col items-center
+          px-6 sm:px-8 py-3
+          transition-all duration-500 ease-out border
+          ${
+            scrolled || isOpen
+              ? "w-[95%] max-w-5xl rounded-3xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg"
+              : "w-full max-w-7xl bg-transparent border-transparent"
+          }
+        `}
       >
         <div className="w-full flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 group">
